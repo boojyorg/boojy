@@ -21,11 +21,22 @@
                 <span></span>
             </button>
             <ul class="nav-menu">
-                <li><a href="#apps">Apps</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#mission">Mission</a></li>
-                <li><a href="https://github.com/boojyorg" target="_blank">GitHub</a></li>
-                <li><a href="#notify" class="nav-cta">Get Notified</a></li>
+                <li class="nav-group nav-products">
+                    <a href="#audio">Audio</a>
+                    <a href="#cloud">Cloud</a>
+                    <a href="#design">Design</a>
+                    <a href="#draw">Draw</a>
+                </li>
+                <li class="nav-separator">·</li>
+                <li class="nav-group nav-info">
+                    <a href="#roadmap">Roadmap</a>
+                    <a href="https://github.com/tsbujacncl/boojy" target="_blank">GitHub</a>
+                </li>
+                <li class="nav-separator">·</li>
+                <li class="nav-group nav-ctas">
+                    <a href="#notify" class="btn btn-nav-primary">Get Notified</a>
+                    <a href="https://buymeacoffee.com/boojy" target="_blank" class="btn btn-nav-secondary">Donate</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -33,37 +44,25 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <h1 class="hero-title">
-                <span class="sparkle">✨</span>
-                Creativity Without Limits
-                <span class="sparkle">✨</span>
-            </h1>
+            <h1 class="hero-title">Creativity Without Limits</h1>
             <p class="hero-subtitle">
-                Professional creative tools from the universe.<br>
-                Free, open-source, and yours forever.
+                Boojy is a free, open-source suite for Audio, Cloud, Design and Draw — simple, modern, and built for hobbyists and creators.
             </p>
-            <p class="hero-tagline">
-                No subscriptions. No ads. No tracking.
-            </p>
-            <div class="hero-cta">
-                <a href="#apps" class="btn btn-primary">Explore the Suite 🪐</a>
-                <a href="#notify" class="btn btn-secondary">Get Early Access 🚀</a>
-            </div>
-            <div class="scroll-indicator">
-                <span>↓</span>
+            <div class="hero-cta-links">
+                <a href="#audio" class="hero-link">▸ Try Audio</a>
+                <a href="#draw" class="hero-link">▸ Explore Draw</a>
+                <a href="#roadmap" class="hero-link">▸ View Roadmap</a>
+                <a href="https://github.com/tsbujacncl/boojy" target="_blank" class="hero-link">▸ Visit GitHub</a>
             </div>
         </div>
     </section>
 
-    <!-- Quick Apps Grid -->
+    <!-- Apps Grid -->
     <section id="apps" class="apps-section">
         <div class="container">
-            <h2 class="section-title">The Boojy Suite</h2>
-            <p class="section-subtitle">Six powerful apps to fuel your creativity</p>
-
             <div class="apps-grid">
                 <!-- Boojy Audio -->
-                <div class="app-card" data-planet="audio">
+                <div class="app-card" id="audio" data-planet="audio">
                     <div class="app-planet">
                         <div class="planet-icon planet-audio"></div>
                     </div>
@@ -77,29 +76,29 @@
                     <div class="app-status">
                         <span class="status-badge">🚧 Preview: Month 2</span>
                     </div>
-                    <a href="#" class="app-link">Explore Planet →</a>
+                    <a href="#" class="app-link">Learn More →</a>
                 </div>
 
-                <!-- Boojy Draw -->
-                <div class="app-card" data-planet="draw">
+                <!-- Boojy Cloud -->
+                <div class="app-card" id="cloud" data-planet="design">
                     <div class="app-planet">
-                        <div class="planet-icon planet-draw"></div>
+                        <div class="planet-icon planet-design"></div>
                     </div>
-                    <h3 class="app-name">Boojy Draw</h3>
-                    <p class="app-tagline">Digital Illustration</p>
+                    <h3 class="app-name">Boojy Cloud</h3>
+                    <p class="app-tagline">Creative Storage & Sync</p>
                     <p class="app-description">
-                        Painting and drawing with pressure-sensitive brushes.
-                        Unlimited layers, blend modes, and custom brushes.
+                        Creative-aware storage that syncs your projects across all devices.
+                        Auto-versioning, smart previews, offline-first.
                     </p>
-                    <p class="app-replaces">Replaces: Procreate, Krita, Photoshop</p>
+                    <p class="app-replaces">Replaces: Google Drive, Dropbox</p>
                     <div class="app-status">
-                        <span class="status-badge">🚧 Preview: Month 5</span>
+                        <span class="status-badge">🚧 Preview: Month 2</span>
                     </div>
-                    <a href="#" class="app-link">Explore Planet →</a>
+                    <a href="#" class="app-link">Learn More →</a>
                 </div>
 
                 <!-- Boojy Design -->
-                <div class="app-card" data-planet="design">
+                <div class="app-card" id="design" data-planet="design">
                     <div class="app-planet">
                         <div class="planet-icon planet-design"></div>
                     </div>
@@ -113,108 +112,30 @@
                     <div class="app-status">
                         <span class="status-badge">🚧 Preview: Month 7</span>
                     </div>
-                    <a href="#" class="app-link">Explore Planet →</a>
+                    <a href="#" class="app-link">Learn More →</a>
                 </div>
 
-                <!-- Boojy Video -->
-                <div class="app-card" data-planet="video">
+                <!-- Boojy Draw -->
+                <div class="app-card" id="draw" data-planet="draw">
                     <div class="app-planet">
-                        <div class="planet-icon planet-video"></div>
+                        <div class="planet-icon planet-draw"></div>
                     </div>
-                    <h3 class="app-name">Boojy Video</h3>
-                    <p class="app-tagline">Video & Motion Graphics</p>
+                    <h3 class="app-name">Boojy Draw</h3>
+                    <p class="app-tagline">Digital Illustration</p>
                     <p class="app-description">
-                        Video editing with integrated motion graphics.
-                        Premiere and After Effects in one app.
+                        Painting and drawing with pressure-sensitive brushes.
+                        Unlimited layers, blend modes, and custom brushes.
                     </p>
-                    <p class="app-replaces">Replaces: Premiere Pro, After Effects</p>
+                    <p class="app-replaces">Replaces: Procreate, Krita, Photoshop</p>
                     <div class="app-status">
-                        <span class="status-badge">🔮 Coming: Month 12+</span>
+                        <span class="status-badge">🚧 Preview: Month 5</span>
                     </div>
-                    <a href="#" class="app-link">Explore Planet →</a>
-                </div>
-
-                <!-- Boojy Animate -->
-                <div class="app-card" data-planet="animate">
-                    <div class="app-planet">
-                        <div class="planet-icon planet-animate"></div>
-                    </div>
-                    <h3 class="app-name">Boojy Animate</h3>
-                    <p class="app-tagline">2D Animation</p>
-                    <p class="app-description">
-                        Frame-by-frame and motion graphics animation.
-                        Bring your artwork to life.
-                    </p>
-                    <p class="app-replaces">Replaces: Adobe Animate, Toon Boom</p>
-                    <div class="app-status">
-                        <span class="status-badge">🔮 Coming: Month 18+</span>
-                    </div>
-                    <a href="#" class="app-link">Explore Planet →</a>
-                </div>
-
-                <!-- Boojy Score -->
-                <div class="app-card" data-planet="score">
-                    <div class="app-planet">
-                        <div class="planet-icon planet-score"></div>
-                    </div>
-                    <h3 class="app-name">Boojy Score</h3>
-                    <p class="app-tagline">Music Notation</p>
-                    <p class="app-description">
-                        Professional music notation and composition.
-                        Full orchestral scoring and arrangement.
-                    </p>
-                    <p class="app-replaces">Replaces: MuseScore, Sibelius, Finale</p>
-                    <div class="app-status">
-                        <span class="status-badge">🔮 Coming: Month 24+</span>
-                    </div>
-                    <a href="#" class="app-link">Explore Planet →</a>
+                    <a href="#" class="app-link">Learn More →</a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Mission & Values -->
-    <section id="mission" class="mission-section">
-        <div class="container">
-            <h2 class="section-title">Built for Creators, By Creators</h2>
-            <p class="section-subtitle">Our mission is to make professional creative tools accessible to everyone</p>
-
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">✓</div>
-                    <h3>Free Forever</h3>
-                    <p>No subscriptions, no paywalls, no feature restrictions. Use Boojy Suite for personal or commercial work—completely free.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">🔓</div>
-                    <h3>Open Source</h3>
-                    <p>Code goes public after v1.0 stability. Transparent, auditable, and community-driven under MIT license.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">🔒</div>
-                    <h3>Privacy First</h3>
-                    <p>No telemetry, no ads, no data mining. Your projects stay yours. We'll never track or sell your information.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">🌍</div>
-                    <h3>Cross Platform</h3>
-                    <p>Works on Windows, Mac, Linux, iPad, and web. Create anywhere, sync everywhere with Boojy Cloud.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">🎨</div>
-                    <h3>No AI Art</h3>
-                    <p>Real tools for real artists. No AI-generated art—just powerful creative software built for human creativity.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">💚</div>
-                    <h3>Ethical & Sustainable</h3>
-                    <p>Funded through optional support—Cloud storage, donations, and community. All revenue reinvested in development.</p>
-                </div>
+            <div class="value-proposition">
+                90/10 creator-first • Cross-platform • No ads • Open-source forever
             </div>
         </div>
     </section>
@@ -304,80 +225,15 @@
         </div>
     </section>
 
-    <!-- Support Section -->
-    <section class="support-section">
-        <div class="container">
-            <h2 class="section-title">Support Development</h2>
-            <p class="section-subtitle">Apps are free forever. Optional support helps us build faster.</p>
-
-            <div class="support-links">
-                <a href="https://github.com/boojyorg" target="_blank" class="support-btn">
-                    <span class="support-icon">⭐</span>
-                    <span>Star on GitHub</span>
-                </a>
-                <a href="https://buymeacoffee.com/boojy" target="_blank" class="support-btn">
-                    <span class="support-icon">☕</span>
-                    <span>Buy Me a Coffee</span>
-                </a>
-                <a href="https://twitter.com/boojyorg" target="_blank" class="support-btn">
-                    <span class="support-icon">🐦</span>
-                    <span>Follow on X/Twitter</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <span class="logo-icon">✨</span>
-                        <span class="logo-text">Boojy Suite</span>
-                    </div>
-                    <p class="footer-tagline">Built by creators, for creators.</p>
-                </div>
-
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Apps</h4>
-                        <ul>
-                            <li><a href="#apps">Boojy Audio</a></li>
-                            <li><a href="#apps">Boojy Draw</a></li>
-                            <li><a href="#apps">Boojy Design</a></li>
-                            <li><a href="#apps">Boojy Video</a></li>
-                            <li><a href="#apps">Boojy Animate</a></li>
-                            <li><a href="#apps">Boojy Score</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <ul>
-                            <li><a href="#roadmap">Roadmap</a></li>
-                            <li><a href="#mission">Mission</a></li>
-                            <li><a href="https://github.com/boojyorg">GitHub</a></li>
-                            <li><a href="#notify">Get Notified</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://github.com/boojyorg">GitHub</a></li>
-                            <li><a href="https://twitter.com/boojyorg">Twitter/X</a></li>
-                            <li><a href="https://youtube.com/@boojy">YouTube</a></li>
-                            <li><a href="https://buymeacoffee.com/boojy">Donate</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Boojy Suite. MIT License after v1.0.</p>
-                <p class="footer-note">Human-made tools for human creativity.</p>
-            </div>
+            <p class="footer-links">
+                <a href="#about">About Us</a> ·
+                <a href="#contact">Contact</a> ·
+                <a href="#privacy">Privacy</a> ·
+                © Boojy.org — Created by Tyr
+            </p>
         </div>
     </footer>
 
