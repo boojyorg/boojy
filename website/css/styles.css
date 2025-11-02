@@ -210,7 +210,7 @@ body {
     text-align: center;
     position: relative;
     padding-top: 140px;
-    padding-bottom: var(--spacing-lg);
+    padding-bottom: 0;
     background: var(--color-bg);
     overflow: hidden;
 }
@@ -357,7 +357,7 @@ section {
 /* === Apps Section === */
 .apps-section {
     background: var(--color-bg);
-    padding-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
     padding-bottom: var(--spacing-3xl);
 }
 
