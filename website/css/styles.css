@@ -107,7 +107,7 @@ body {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-primary);
     text-decoration: none;
@@ -120,7 +120,7 @@ body {
 }
 
 .logo-icon {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     animation: sparkle 2s ease-in-out infinite;
 }
 
@@ -335,6 +335,17 @@ body {
 .btn-secondary:hover {
     background: var(--color-primary);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-coffee {
+    background: #FACC15;
+    color: #1A1B23;
+}
+
+.btn-coffee:hover {
+    background: #EAB308;
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
