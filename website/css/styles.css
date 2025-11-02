@@ -988,6 +988,41 @@ section {
     color: var(--color-primary);
 }
 
+.footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: var(--color-text-light);
+    transition: all 0.3s ease;
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.social-icon:hover {
+    color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.footer-copyright {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin: var(--spacing-md) 0 0 0;
+}
+
 /* === Feature Request Page === */
 .hero-feature-request {
     min-height: auto;
