@@ -494,7 +494,7 @@ section {
     line-height: 1.6;
 }
 
-.app-replaces {
+.app-use-cases {
     font-size: 0.875rem;
     color: var(--color-text-light);
     margin-bottom: var(--spacing-md);
