@@ -203,7 +203,7 @@ body {
 
 /* === Hero Section === */
 .hero {
-    min-height: 60vh;
+    min-height: auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
