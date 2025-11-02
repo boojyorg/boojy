@@ -357,6 +357,8 @@ section {
 /* === Apps Section === */
 .apps-section {
     background: var(--color-bg);
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-3xl);
 }
 
 .apps-grid {
