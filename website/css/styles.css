@@ -12,9 +12,9 @@
     --color-accent: #00B3FF;         /* Uranus Blue accent */
 
     /* Planet Colors */
-    --color-audio: #A855F7;          /* Purple */
-    --color-draw: #FF6B3D;           /* Mars Coral */
-    --color-design: #00B3FF;         /* Uranus Blue */
+    --color-audio: #8C8C8C;          /* Mercury Gray */
+    --color-draw: #E8D5A9;           /* Venus Cream */
+    --color-design: #4A90E2;         /* Earth Blue */
     --color-video: #FACC15;          /* Sun Gold */
     --color-animate: #C77DFF;        /* Venus Lilac */
     --color-score: #3730A3;          /* Deep Blue */
@@ -424,6 +424,7 @@ section {
 .app-card[data-planet="audio"] { --planet-color: var(--color-audio); }
 .app-card[data-planet="draw"] { --planet-color: var(--color-draw); }
 .app-card[data-planet="design"] { --planet-color: var(--color-design); }
+.app-card[data-planet="cloud"] { --planet-color: #A5B4FC; }
 .app-card[data-planet="video"] { --planet-color: var(--color-video); }
 .app-card[data-planet="animate"] { --planet-color: var(--color-animate); }
 .app-card[data-planet="score"] { --planet-color: var(--color-score); }
@@ -445,18 +446,58 @@ section {
 
 /* Planet designs */
 .planet-audio {
-    background: radial-gradient(circle at 30% 30%, var(--color-audio), #7E22CE);
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+    background: radial-gradient(circle at 30% 30%, #B0B0B0, #6B6B6B);
+    box-shadow: 0 0 30px rgba(140, 140, 140, 0.4);
 }
 
 .planet-draw {
-    background: radial-gradient(circle at 30% 30%, var(--color-draw), #DC2626);
-    box-shadow: 0 0 30px rgba(255, 107, 61, 0.3);
+    background: radial-gradient(circle at 30% 30%, #FFF4D6, #D4B896);
+    box-shadow: 0 0 30px rgba(232, 213, 169, 0.5);
 }
 
 .planet-design {
-    background: radial-gradient(circle at 30% 30%, var(--color-design), #0284C7);
-    box-shadow: 0 0 30px rgba(0, 179, 255, 0.3);
+    background: radial-gradient(circle at 35% 35%, #6BB6FF, #2E5C8A);
+    box-shadow: 0 0 30px rgba(74, 144, 226, 0.4);
+    position: relative;
+}
+
+.planet-design::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 45% 55%, transparent 20%, rgba(76, 175, 80, 0.3) 40%, transparent 70%);
+    pointer-events: none;
+}
+
+.planet-cloud {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E0E7FF 50%, #C7D2FE 100%);
+    border-radius: 60% 40% 40% 60% / 60% 50% 50% 40%;
+    box-shadow: 0 0 30px rgba(199, 210, 254, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.5);
+    position: relative;
+}
+
+.planet-cloud::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    top: 10%;
+    left: 15%;
+}
+
+.planet-cloud::after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    bottom: 15%;
+    right: 20%;
 }
 
 .planet-video {
