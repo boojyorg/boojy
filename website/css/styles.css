@@ -9,7 +9,7 @@
     --color-primary: #F5F5F5;        /* Light text */
     --color-primary-light: #FFFFFF;
     --color-primary-dark: #E5E5E5;
-    --color-accent: #00B3FF;         /* Uranus Blue accent */
+    --color-accent: #A855F7;         /* Cosmic Purple accent */
 
     /* Planet Colors */
     --color-audio: #8C8C8C;          /* Mercury Gray */
@@ -87,7 +87,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(26, 27, 35, 0.95);
+    background: rgba(42, 43, 53, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border);
     z-index: 100;
@@ -99,8 +99,8 @@ body {
     margin: 0 auto;
     padding: var(--spacing-md) var(--spacing-lg);
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: var(--spacing-xl);
 }
 
 .nav-logo {
@@ -134,6 +134,7 @@ body {
     list-style: none;
     gap: var(--spacing-md);
     align-items: center;
+    flex: 1;
 }
 
 .nav-group {
@@ -142,22 +143,85 @@ body {
     align-items: center;
 }
 
-.nav-separator {
-    color: var(--color-text-light);
-    font-size: 1.125rem;
-    user-select: none;
+.nav-group.nav-ctas {
+    margin-left: auto;
 }
 
 .nav-menu a {
-    color: var(--color-text);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
     font-size: 0.9375rem;
 }
 
 .nav-menu a:hover {
-    color: var(--color-primary);
+    transform: scale(1.02);
+}
+
+/* Planet-colored nav links - full color default, brighter on hover */
+.nav-menu a[href*="audio"] {
+    color: #8C8C8C;
+}
+
+.nav-menu a[href*="audio"]:hover {
+    color: #B0B0B0;
+}
+
+.nav-menu a[href*="draw"] {
+    color: #E8D5A9;
+}
+
+.nav-menu a[href*="draw"]:hover {
+    color: #F5E8C8;
+}
+
+.nav-menu a[href*="design"] {
+    color: #4A90E2;
+}
+
+.nav-menu a[href*="design"]:hover {
+    color: #6BA8F0;
+}
+
+.nav-menu a[href*="cloud"] {
+    color: #A5B4FC;
+}
+
+.nav-menu a[href*="cloud"]:hover {
+    color: #C0CBFD;
+}
+
+/* Complementary colors for info nav links - full color default, brighter on hover */
+.nav-menu a[href*="roadmap"] {
+    color: #F59E0B;
+}
+
+.nav-menu a[href*="roadmap"]:hover {
+    color: #FABC4E;
+}
+
+.nav-menu a[href*="devlog"] {
+    color: #14B8A6;
+}
+
+.nav-menu a[href*="devlog"]:hover {
+    color: #3DCDBF;
+}
+
+.nav-menu a[href*="downloads"] {
+    color: #14B8A6;
+}
+
+.nav-menu a[href*="downloads"]:hover {
+    color: #3DCDBF;
+}
+
+.nav-menu a[href*="github"] {
+    color: #A855F7;
+}
+
+.nav-menu a[href*="github"]:hover {
+    color: #C084FA;
 }
 
 /* Navigation CTA Buttons */
@@ -183,6 +247,8 @@ body {
     background: #EC4899;
     color: white !important;
     border: none;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.875rem;
 }
 
 .btn-nav-secondary:hover {
@@ -382,7 +448,7 @@ section {
 
 .apps-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: var(--spacing-xl);
     margin-top: var(--spacing-xl);
 }
@@ -396,6 +462,7 @@ section {
     border: 2px solid transparent;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .app-card::before {
@@ -411,20 +478,33 @@ section {
 }
 
 .app-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--planet-color, var(--color-primary));
+    transform: translateY(-12px) scale(1.01);
+    background: #32333E;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 2px var(--planet-color, var(--color-accent)), 0 0 30px var(--planet-glow, rgba(168, 85, 247, 0.6));
+    border-color: var(--planet-color, var(--color-accent));
 }
 
 .app-card:hover::before {
     opacity: 1;
 }
 
-/* Planet-specific colors */
-.app-card[data-planet="audio"] { --planet-color: var(--color-audio); }
-.app-card[data-planet="draw"] { --planet-color: var(--color-draw); }
-.app-card[data-planet="design"] { --planet-color: var(--color-design); }
-.app-card[data-planet="cloud"] { --planet-color: #A5B4FC; }
+/* Planet-specific colors and glows */
+.app-card[data-planet="audio"] {
+    --planet-color: var(--color-audio);
+    --planet-glow: rgba(140, 140, 140, 0.5);
+}
+.app-card[data-planet="draw"] {
+    --planet-color: var(--color-draw);
+    --planet-glow: rgba(232, 213, 169, 0.6);
+}
+.app-card[data-planet="design"] {
+    --planet-color: var(--color-design);
+    --planet-glow: rgba(74, 144, 226, 0.6);
+}
+.app-card[data-planet="cloud"] {
+    --planet-color: #A5B4FC;
+    --planet-glow: rgba(165, 180, 252, 0.6);
+}
 .app-card[data-planet="video"] { --planet-color: var(--color-video); }
 .app-card[data-planet="animate"] { --planet-color: var(--color-animate); }
 .app-card[data-planet="score"] { --planet-color: var(--color-score); }
@@ -477,7 +557,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 80px;
+    font-size: 140px;
     line-height: 1;
 }
 
@@ -516,36 +596,515 @@ section {
     line-height: 1.6;
 }
 
-.app-use-cases {
+.app-preview {
+    margin-top: var(--spacing-lg);
+    margin-bottom: 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+}
+
+.app-preview:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 8px 16px rgba(168, 85, 247, 0.15);
+    transform: translateY(-2px);
+}
+
+.preview-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.app-card:hover .preview-image {
+    transform: scale(1.08);
+    filter: brightness(1.15);
+}
+
+/* === Downloads Page === */
+.downloads-section {
+    background: var(--color-bg);
+    padding: var(--spacing-3xl) 0;
+}
+
+.download-card {
+    background: var(--color-bg-alt);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-2xl);
+    margin-bottom: var(--spacing-xl);
+    border: 1px solid var(--color-border);
+}
+
+.download-card-coming {
+    opacity: 0.8;
+}
+
+.download-card-integrated {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.05) 0%, rgba(165, 180, 252, 0.05) 100%);
+}
+
+.download-header {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    align-items: center;
+}
+
+.download-planet {
+    flex-shrink: 0;
+}
+
+.download-planet .planet-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.download-info {
+    flex: 1;
+}
+
+.download-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.download-tagline {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+.download-status {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.download-description {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.download-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-md);
+}
+
+.btn-download {
+    display: inline-block;
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-download:hover {
+    background: #9333EA;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+}
+
+.btn-notify {
+    background: var(--color-bg);
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+}
+
+.btn-notify:hover {
+    background: var(--color-accent);
+    color: white;
+}
+
+.download-note {
     font-size: 0.875rem;
     color: var(--color-text-light);
     margin-bottom: var(--spacing-md);
     font-style: italic;
 }
 
-.app-status {
+.download-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.download-link:hover {
+    opacity: 0.7;
+}
+
+.cloud-features {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--color-bg);
+    border-radius: var(--border-radius);
+}
+
+.cloud-features h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
     margin-bottom: var(--spacing-md);
 }
 
-.status-badge {
-    display: inline-block;
-    padding: var(--spacing-xs) var(--spacing-md);
-    background: var(--color-bg-alt);
-    border-radius: var(--border-radius);
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-text);
+.cloud-features ul {
+    list-style: none;
+    padding: 0;
 }
 
-.app-link {
-    color: var(--planet-color, var(--color-primary));
+.cloud-features li {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.requirements-section {
+    background: var(--color-bg-alt);
+    padding: var(--spacing-3xl) 0;
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+}
+
+.requirement-card {
+    background: var(--color-bg);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
+}
+
+.requirement-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.requirement-card p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* === App Page Template === */
+/* App Hero Section */
+.app-hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding-top: 140px;
+    padding-bottom: var(--spacing-3xl);
+    background: var(--color-bg);
+    overflow: hidden;
+}
+
+.app-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.app-hero-planet {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.app-hero-planet .planet-icon {
+    width: 140px;
+    height: 140px;
+    transition: transform 0.5s ease;
+}
+
+.app-hero:hover .planet-icon {
+    transform: scale(1.05);
+}
+
+.app-hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+}
+
+.app-hero-tagline {
+    font-size: 1.5rem;
+    color: var(--color-accent);
     font-weight: 600;
-    text-decoration: none;
+    margin-bottom: var(--spacing-lg);
+}
+
+.app-hero-description {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
+    line-height: 1.7;
+}
+
+.app-hero-cta {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg);
+}
+
+.app-hero-status {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Key Features Section */
+.key-features-section {
+    background: var(--color-bg-alt);
+    padding: var(--spacing-3xl) 0;
+}
+
+.key-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+}
+
+.feature-card {
+    background: var(--color-bg);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border);
     transition: all 0.3s ease;
 }
 
-.app-link:hover {
-    opacity: 0.7;
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-accent);
+    box-shadow: 0 12px 24px rgba(168, 85, 247, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.feature-description {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Features List Section */
+.features-list-section {
+    background: var(--color-bg);
+    padding: var(--spacing-3xl) 0;
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+}
+
+.features-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.features-column li {
+    color: var(--color-text);
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    line-height: 1.6;
+}
+
+.features-column li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Screenshots Section */
+.screenshots-section {
+    background: var(--color-bg-alt);
+    padding: var(--spacing-3xl) 0;
+}
+
+.screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+}
+
+.screenshot-placeholder {
+    aspect-ratio: 16 / 10;
+    background: var(--color-bg);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--spacing-xl);
+    transition: all 0.3s ease;
+}
+
+.screenshot-placeholder:hover {
+    border-color: var(--color-accent);
+    background: rgba(168, 85, 247, 0.05);
+}
+
+.screenshot-placeholder p {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.screenshot-placeholder span {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+}
+
+/* Download Section for App Pages */
+.download-section-app {
+    background: var(--color-bg);
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+}
+
+.download-platforms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin: var(--spacing-2xl) 0;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.platform-download {
+    background: var(--color-bg-alt);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    border: 2px solid var(--color-border);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    transition: all 0.3s ease;
+}
+
+.platform-download:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-accent);
+    box-shadow: 0 12px 24px rgba(168, 85, 247, 0.2);
+}
+
+.platform-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.platform-info {
+    text-align: left;
+}
+
+.platform-info h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.platform-info p {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+.download-requirements {
+    background: var(--color-bg-alt);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-2xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.download-requirements h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.download-requirements p {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.download-requirements p:last-child {
+    margin-bottom: 0;
+}
+
+.download-footer-note {
+    margin-top: var(--spacing-xl);
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+}
+
+.download-footer-note a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.download-footer-note a:hover {
+    opacity: 0.8;
 }
 
 /* Value Proposition */
@@ -719,7 +1278,7 @@ section {
 .status-dot.status-active {
     background: var(--color-accent);
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+    box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.2);
 }
 
 .status-dot.status-upcoming {
@@ -1098,7 +1657,7 @@ section {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(0, 179, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
 }
 
 .form-group textarea {
@@ -1158,7 +1717,7 @@ section {
 .stat-card:hover {
     transform: translateY(-4px);
     border-color: var(--color-accent);
-    box-shadow: 0 8px 16px rgba(0, 179, 255, 0.15);
+    box-shadow: 0 8px 16px rgba(168, 85, 247, 0.15);
 }
 
 .stat-amount {
@@ -1235,7 +1794,7 @@ section {
 .progress-bar {
     width: 100%;
     height: 8px;
-    background: rgba(0, 179, 255, 0.1);
+    background: rgba(168, 85, 247, 0.1);
     border-radius: 4px;
     overflow: hidden;
     margin: var(--spacing-md) 0;
@@ -1305,20 +1864,22 @@ section {
 }
 
 .devlog-widget {
-    background: linear-gradient(135deg, var(--color-accent) 0%, #0284C7 100%);
+    background: var(--color-bg-alt);
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-2xl);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: var(--spacing-xl);
-    box-shadow: 0 10px 30px rgba(0, 179, 255, 0.2);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+    border: 1px solid var(--color-border);
     transition: all 0.3s ease;
 }
 
 .devlog-widget:hover {
     transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(0, 179, 255, 0.3);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-accent);
 }
 
 .devlog-content {
@@ -1328,26 +1889,26 @@ section {
 .devlog-badge {
     display: inline-block;
     padding: var(--spacing-xs) var(--spacing-md);
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    background: var(--color-bg);
+    border: 1px solid var(--color-accent);
     border-radius: var(--border-radius);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: white;
+    color: var(--color-accent);
     margin-bottom: var(--spacing-sm);
 }
 
 .devlog-title {
     font-size: 1.75rem;
     font-weight: 700;
-    color: white;
+    color: var(--color-primary);
     margin: var(--spacing-sm) 0;
 }
 
 .devlog-description {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-text-light);
     font-size: 1rem;
     line-height: 1.6;
     margin: var(--spacing-sm) 0;
@@ -1363,7 +1924,7 @@ section {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-xs);
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--color-text);
     font-size: 0.9rem;
     font-weight: 600;
 }
@@ -1371,8 +1932,8 @@ section {
 .btn-devlog {
     display: inline-block;
     padding: var(--spacing-md) var(--spacing-xl);
-    background: white;
-    color: var(--color-accent);
+    background: var(--color-accent);
+    color: white;
     font-weight: 700;
     font-size: 1rem;
     border-radius: var(--border-radius);
@@ -1382,7 +1943,7 @@ section {
 }
 
 .btn-devlog:hover {
-    background: var(--color-primary);
+    background: #9333EA;
     transform: scale(1.05);
 }
 
@@ -1410,7 +1971,7 @@ section {
 .preview-card:hover {
     transform: translateY(-8px);
     border-color: var(--color-accent);
-    box-shadow: 0 10px 30px rgba(0, 179, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
 }
 
 .preview-thumbnail {
@@ -1805,7 +2366,7 @@ section {
         left: -100%;
         width: 100%;
         height: calc(100vh - 72px);
-        background: rgba(26, 27, 35, 0.98);
+        background: rgba(42, 43, 53, 0.98);
         backdrop-filter: blur(10px);
         flex-direction: column;
         padding: var(--spacing-xl);
@@ -1822,10 +2383,6 @@ section {
         flex-direction: column;
         gap: var(--spacing-md);
         width: 100%;
-    }
-
-    .nav-separator {
-        display: none;
     }
 
     .btn-nav-primary,
