@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Request a feature for Boojy Suite. Share your ideas and help shape the future of creative tools.">
-    <title>Request a Feature – Boojy</title>
+    <meta name="description" content="Page not found - Boojy Suite">
+    <title>404 - Page Not Found | Boojy</title>
     <link rel="stylesheet" href="css/styles.css?v=2">
 </head>
 <body>
@@ -40,43 +40,36 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero hero-feature-request">
-        <div class="container hero-content">
-            <h1 class="hero-title">Request a Feature</h1>
-            <p class="hero-subtitle">
-                Have an idea for Boojy? Share it with us. Your feedback helps shape the future of creative tools.
-            </p>
-        </div>
-    </section>
+    <!-- 404 Content -->
+    <section style="min-height: 70vh; display: flex; align-items: center; justify-content: center; padding: var(--spacing-3xl) 0; position: relative; overflow: hidden; background: var(--color-bg);">
+        <div class="stars"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <h1 style="font-size: 8rem; font-weight: 800; color: var(--color-accent); margin-bottom: var(--spacing-md); line-height: 1;">404</h1>
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: var(--spacing-lg);">Page Not Found</h2>
+                <p style="font-size: 1.125rem; color: var(--color-text-light); margin-bottom: var(--spacing-2xl); line-height: 1.7;">
+                    Looks like you've ventured into uncharted space. The page you're looking for doesn't exist or has been moved.
+                </p>
 
-    <!-- Feature Request Form -->
-    <section class="feature-request-section">
-        <div class="container">
-            <div class="form-container">
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="feature-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Your name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="your@email.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="feature">Feature Request</label>
-                        <textarea id="feature" name="message" required placeholder="Tell us about the feature you'd like to see..." rows="6"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit Feature Request</button>
-                </form>
-
-                <div class="form-info">
-                    <p><strong>Not sure how to submit?</strong></p>
-                    <p>You can also submit feature requests directly on our <a href="https://github.com/tsbujacncl/boojy" target="_blank">GitHub repository</a> or email us at <a href="mailto:contact@boojy.org">contact@boojy.org</a>.</p>
+                <!-- Quick Links -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-bottom: var(--spacing-2xl);">
+                    <a href="index.html" style="display: block; padding: var(--spacing-lg); background: var(--color-bg-alt); border-radius: var(--border-radius); text-decoration: none; color: var(--color-text); border: 1px solid var(--color-border); transition: all 0.3s ease;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">🏠</div>
+                        <div style="font-weight: 600; color: var(--color-primary);">Home</div>
+                    </a>
+                    <a href="downloads.html" style="display: block; padding: var(--spacing-lg); background: var(--color-bg-alt); border-radius: var(--border-radius); text-decoration: none; color: var(--color-text); border: 1px solid var(--color-border); transition: all 0.3s ease;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">⬇️</div>
+                        <div style="font-weight: 600; color: var(--color-primary);">Downloads</div>
+                    </a>
+                    <a href="devlog.html" style="display: block; padding: var(--spacing-lg); background: var(--color-bg-alt); border-radius: var(--border-radius); text-decoration: none; color: var(--color-text); border: 1px solid var(--color-border); transition: all 0.3s ease;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">📝</div>
+                        <div style="font-weight: 600; color: var(--color-primary);">Dev Log</div>
+                    </a>
                 </div>
+
+                <p style="color: var(--color-text-light); font-size: 0.875rem;">
+                    If you think this is an error, please <a href="mailto:contact@boojy.org" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">let us know</a>.
+                </p>
             </div>
         </div>
     </section>
@@ -85,7 +78,7 @@
     <footer class="footer">
         <div class="container">
             <p class="footer-links">
-                <a href="about.html">About Us</a> ·
+                <a href="about.html">About</a> ·
                 <a href="mailto:contact@boojy.org">Contact</a> ·
                 <a href="feature-request.html">Request a Feature</a> ·
                 <a href="donate.html">Donate</a> ·

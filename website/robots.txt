@@ -1,0 +1,10 @@
+# Boojy.org robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://boojy.org/sitemap.xml
+
+# Disallow admin or private directories (if any in future)
+# Disallow: /admin/

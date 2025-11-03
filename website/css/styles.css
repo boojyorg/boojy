@@ -720,6 +720,20 @@ section {
     box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
 }
 
+.btn-download-disabled {
+    background: var(--color-bg);
+    border: 2px dashed var(--color-border);
+    color: var(--color-text-light);
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.btn-download-disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
 .btn-notify {
     background: var(--color-bg);
     border: 2px solid var(--color-accent);
@@ -1039,6 +1053,20 @@ section {
     transform: translateY(-6px);
     border-color: var(--color-accent);
     box-shadow: 0 12px 24px rgba(168, 85, 247, 0.2);
+}
+
+.platform-download-disabled {
+    background: var(--color-bg);
+    border: 2px dashed var(--color-border);
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.platform-download-disabled:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--color-border);
 }
 
 .platform-icon {
