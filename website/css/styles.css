@@ -201,11 +201,11 @@ body {
 }
 
 .nav-menu a[href*="devlog"] {
-    color: #14B8A6;
+    color: #EF4444;
 }
 
 .nav-menu a[href*="devlog"]:hover {
-    color: #3DCDBF;
+    color: #F87171;
 }
 
 .nav-menu a[href*="downloads"] {
