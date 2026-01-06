@@ -1,4 +1,4 @@
-# Netlify Configuration for Boojy Suite Website
+# Netlify Configuration for Boojy Audio Website
 
 [build]
   # Publish directory (root of the website)
@@ -35,16 +35,10 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Redirect rules (optional - for future use)
+# Redirect rules
 [[redirects]]
   from = "/github"
-  to = "https://github.com/boojyorg"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/donate"
-  to = "https://buymeacoffee.com/boojy"
+  to = "https://github.com/tsbujacncl/boojy"
   status = 301
   force = true
 
@@ -54,8 +48,8 @@
   status = 301
   force = true
 
-# 404 redirect (optional - can create custom 404 page later)
+# 404 redirect
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/404.html"
   status = 404

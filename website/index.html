@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional creative tools that are free, open-source, and respect your privacy. No subscriptions. No ads. No tracking.">
-    <title>Boojy Suite – Creativity Without Limits</title>
-    <link rel="stylesheet" href="css/styles.css?v=2">
+    <meta name="description" content="Boojy Audio - A free, simple music studio for macOS and Windows. Perfect for making your first beat.">
+    <meta property="og:title" content="Boojy Audio - Free DAW for Beginners">
+    <meta property="og:description" content="A free, simple music studio for macOS and Windows. Perfect for making your first beat.">
+    <meta property="og:type" content="website">
+    <title>Boojy Audio – Free DAW for Beginners</title>
+    <link rel="stylesheet" href="css/styles.css?v=3">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="logo-icon">✨</span>
-                <span class="logo-text">Boojy</span>
+                <img src="images/boojy-logo.svg" alt="Boojy Audio" class="logo-image">
             </a>
             <button class="nav-toggle" aria-label="Toggle navigation">
                 <span></span>
@@ -21,21 +23,10 @@
                 <span></span>
             </button>
             <ul class="nav-menu">
-                <li class="nav-group nav-products">
-                    <a href="audio.html">Audio</a>
-                    <a href="draw.html">Draw</a>
-                    <a href="design.html">Design</a>
-                    <a href="board.html">Board</a>
-                    <a href="cloud.html">Cloud</a>
-                </li>
                 <li class="nav-group nav-info">
-                    <a href="roadmap.html">Roadmap</a>
-                    <a href="devlog.html">Devlog</a>
-                    <a href="downloads.html">Downloads</a>
+                    <a href="#features">Features</a>
+                    <a href="#download">Download</a>
                     <a href="https://github.com/tsbujacncl/boojy" target="_blank">GitHub</a>
-                </li>
-                <li class="nav-group nav-ctas">
-                    <a href="donate.html" class="btn btn-nav-secondary">❤️ Donate</a>
                 </li>
             </ul>
         </div>
@@ -44,228 +35,164 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <h1 class="hero-title">Creativity Without Limits</h1>
+            <div class="app-hero-planet">
+                <div class="planet-icon planet-audio"></div>
+            </div>
+            <h1 class="hero-title">Boojy Audio</h1>
+            <p class="hero-tagline">Creativity Without Limits</p>
             <p class="hero-subtitle">
-                Boojy is a free, open-source suite for Audio, Board, Cloud, Design and Draw — simple, modern, and built for hobbyists and creators.
+                A free, simple music studio for beginners. Available for macOS and Windows.
             </p>
+            <div class="hero-cta">
+                <a href="#download" class="btn-download-primary" id="primary-download">Download for macOS</a>
+                <a href="#download" class="btn-download-secondary" id="secondary-download">Also available for Windows</a>
+            </div>
         </div>
         <div class="stars"></div>
     </section>
 
-    <!-- Apps Grid -->
-    <section id="apps" class="apps-section">
+    <!-- Screenshot Section -->
+    <section class="screenshot-section">
         <div class="container">
-            <h2 class="section-title">Boojy Suite</h2>
-            <div class="apps-grid">
-                <!-- Boojy Audio -->
-                <a href="audio.html" style="text-decoration: none; color: inherit;">
-                    <div class="app-card" id="audio" data-planet="audio">
-                        <div class="app-planet">
-                            <div class="planet-icon planet-audio"></div>
-                        </div>
-                        <h3 class="app-name">Boojy Audio</h3>
-                        <p class="app-tagline">Music & Sound Design</p>
-                        <p class="app-description">
-                            Full-featured DAW for music production, podcasts, and sound design.
-                            VST support, MIDI sequencing, unlimited tracks.
-                        </p>
-                        <div class="app-preview">
-                            <img src="images/audio-preview.jpg" alt="Boojy Audio interface preview" class="preview-image">
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Boojy Draw -->
-                <a href="draw.html" style="text-decoration: none; color: inherit;">
-                    <div class="app-card" id="draw" data-planet="draw">
-                        <div class="app-planet">
-                            <div class="planet-icon planet-draw"></div>
-                        </div>
-                        <h3 class="app-name">Boojy Draw</h3>
-                        <p class="app-tagline">Digital Illustration</p>
-                        <p class="app-description">
-                            Painting and drawing with pressure-sensitive brushes.
-                            Unlimited layers, blend modes, and custom brushes.
-                        </p>
-                        <div class="app-preview">
-                            <img src="images/draw-preview.jpg" alt="Boojy Draw interface preview" class="preview-image">
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Boojy Design -->
-                <a href="design.html" style="text-decoration: none; color: inherit;">
-                    <div class="app-card" id="design" data-planet="design">
-                        <div class="app-planet">
-                            <div class="planet-icon planet-design"></div>
-                        </div>
-                        <h3 class="app-name">Boojy Design</h3>
-                        <p class="app-tagline">Photo & Vector Editing</p>
-                        <p class="app-description">
-                            Unified design tool with Photo Mode and Vector Mode.
-                            Professional editing without switching apps.
-                        </p>
-                        <div class="app-preview">
-                            <img src="images/design-preview.jpg" alt="Boojy Design interface preview" class="preview-image">
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Boojy Board -->
-                <a href="board.html" style="text-decoration: none; color: inherit;">
-                    <div class="app-card" id="board" data-planet="board">
-                        <div class="app-planet">
-                            <div class="planet-icon planet-board"></div>
-                        </div>
-                        <h3 class="app-name">Boojy Board</h3>
-                        <p class="app-tagline">Free Alternative to Notability & GoodNotes</p>
-                        <p class="app-description">
-                            Cross-platform note-taking and whiteboard app with PDF annotation and pressure-sensitive drawing.
-                            No Apple ecosystem lock-in. No subscriptions. Just powerful note-taking, everywhere.
-                        </p>
-                        <div class="app-preview">
-                            <img src="images/board-preview.jpg" alt="Boojy Board interface preview" class="preview-image">
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Boojy Cloud -->
-                <a href="cloud.html" style="text-decoration: none; color: inherit;">
-                    <div class="app-card" id="cloud" data-planet="cloud">
-                        <div class="app-planet">
-                            <div class="planet-icon planet-cloud">☁️</div>
-                        </div>
-                        <h3 class="app-name">Boojy Cloud</h3>
-                        <p class="app-tagline">Creative Storage & Sync</p>
-                        <p class="app-description">
-                            Creative-aware storage that syncs your projects across all devices.
-                            Auto-versioning, smart previews, offline-first.
-                        </p>
-                        <div class="app-preview">
-                            <img src="images/cloud-preview.jpg" alt="Boojy Cloud interface preview" class="preview-image">
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dev Log Widget -->
-    <section class="devlog-widget-section">
-        <div class="container">
-            <div class="devlog-widget">
-                <div class="devlog-content">
-                    <span class="devlog-badge">Latest Update</span>
-                    <h3 class="devlog-title">The Beginning: Why Boojy Exists</h3>
-                    <p class="devlog-description">Watch the journey as we build Boojy Suite in public. Follow along with regular updates.</p>
-                    <div class="devlog-meta">
-                        <span class="devlog-icon">📺 YouTube</span>
-                        <span class="devlog-icon">📝 Blog Post</span>
-                    </div>
-                </div>
-                <div class="devlog-cta">
-                    <a href="devlog.html" class="btn-devlog">View All Updates →</a>
+            <div class="screenshot-wrapper">
+                <div class="screenshot-placeholder">
+                    <p>Main Interface</p>
+                    <span>Screenshot coming soon</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="faq-section">
+    <!-- Features Section -->
+    <section id="features" class="key-features-section">
         <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-subtitle">Everything you need to know about Boojy Suite</p>
-
-            <div class="faq-container">
-                <!-- FAQ Item 1 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Is Boojy really free forever?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes! The Boojy Suite will always be free with no subscriptions, trials, or paywalls. You can use all features for personal and commercial projects without paying a penny. We're funded by voluntary donations from the community.</p>
-                    </div>
+            <h2 class="section-title">Why Boojy Audio?</h2>
+            <div class="key-features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3 class="feature-title">Cross Platform</h3>
+                    <p class="feature-description">
+                        macOS and Windows. iPad and Linux coming later.
+                    </p>
                 </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>When can I download the apps?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Preview versions of Boojy Audio and Cloud will be available in Month 2. Check our <a href="#roadmap">roadmap</a> for the full release timeline. Follow our <a href="devlog.html">dev log</a> for monthly updates on progress.</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎹</div>
+                    <h3 class="feature-title">Plugin Support</h3>
+                    <p class="feature-description">
+                        Use VST3 and AU instruments and effects.
+                    </p>
                 </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Will Boojy be open-source?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes! The source code will be released publicly after v1.0 of each app. This ensures the product is stable and polished before opening it up to contributions. Until then, we're building in public through our monthly dev logs.</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">Beginner Friendly</h3>
+                    <p class="feature-description">
+                        Clean interface. No overwhelming menus.
+                    </p>
                 </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What platforms are supported?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Initially Windows and macOS. We will then roll out to Linux and iPad. Some apps will be available on web and mobile where possible.</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🆓</div>
+                    <h3 class="feature-title">Completely Free</h3>
+                    <p class="feature-description">
+                        No subscriptions, no paywalls. Free forever.
+                    </p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- FAQ Item 5 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Can I use Boojy for commercial work?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Absolutely! There are no licensing fees or restrictions. Use Boojy Suite for client projects, selling artwork, commercial music production, or any professional work. You own everything you create.</p>
+    <!-- Download Section -->
+    <section id="download" class="download-section-app">
+        <div class="container">
+            <h2 class="section-title">Download Boojy Audio</h2>
+            <p class="section-subtitle">Free and open-source. Coming January 2026.</p>
+            <div class="download-platforms">
+                <span class="platform-download platform-download-disabled" title="Coming January 2026">
+                    <div class="platform-icon">🍎</div>
+                    <div class="platform-info">
+                        <h3>macOS</h3>
+                        <p>Coming January 2026</p>
                     </div>
-                </div>
+                </span>
+                <span class="platform-download platform-download-disabled" title="Coming January 2026">
+                    <div class="platform-icon">🪟</div>
+                    <div class="platform-info">
+                        <h3>Windows</h3>
+                        <p>Coming January 2026</p>
+                    </div>
+                </span>
+            </div>
+            <div class="download-requirements">
+                <h3>System Requirements</h3>
+                <p><strong>macOS:</strong> 10.15+ (Catalina or later), Intel or Apple Silicon</p>
+                <p><strong>Windows:</strong> Windows 10+, 64-bit</p>
+            </div>
+            <p class="download-version">v0.1-beta</p>
+        </div>
+    </section>
 
-                <!-- FAQ Item 6 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>How is development funded?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Boojy is funded entirely by voluntary donations from individuals and companies who believe in our mission. You can support development on our <a href="donate.html">donation page</a>. Every contribution helps us build faster and better.</p>
-                    </div>
-                </div>
+    <!-- Email Signup Section -->
+    <section class="signup-section">
+        <div class="container">
+            <div class="signup-box">
+                <h2 class="signup-title">Stay Updated</h2>
+                <p class="signup-description">Get notified about new releases and features. No spam. Unsubscribe anytime.</p>
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="signup-form-inline">
+                    <input type="email" name="email" placeholder="Your email" required class="signup-input">
+                    <button type="submit" class="btn-signup">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-                <!-- FAQ Item 7 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What future apps do you plan to release in the Boojy Suite?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p><strong>Boojy Video</strong> – Video editing with integrated motion graphics, combining the best of Premiere Pro and After Effects in one standalone app, planned for Month 12+.</p>
-                        <p><strong>Boojy Animate</strong> – 2D animation tool for frame-by-frame and motion graphics work, replacing Adobe Animate and Toon Boom, with tight integration with Boojy Draw, planned for Month 18+.</p>
-                        <p><strong>Boojy Score</strong> – Music notation and composition software for orchestral scoring and arrangement, replacing MuseScore and Sibelius, with seamless integration with Boojy Audio, planned for Month 24+.</p>
+    <!-- Bug Report Section -->
+    <section class="bug-report-section">
+        <div class="container">
+            <div class="bug-report-box">
+                <h2 class="section-title">Found a Bug?</h2>
+                <p class="section-subtitle">Help improve Boojy by reporting issues.</p>
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="bug-report-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bug-email">Email</label>
+                            <input type="email" id="bug-email" name="email" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="bug-os">Operating System</label>
+                            <select id="bug-os" name="os" required class="form-select">
+                                <option value="">Select OS</option>
+                                <option value="macos">macOS</option>
+                                <option value="windows">Windows</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bug-version">Version</label>
+                            <select id="bug-version" name="version" required class="form-select">
+                                <option value="">Select version</option>
+                                <option value="v0.1-beta">v0.1-beta</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="bug-description">What happened?</label>
+                        <textarea id="bug-description" name="description" required class="form-textarea" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bug-steps">Steps to reproduce (optional)</label>
+                        <textarea id="bug-steps" name="steps" class="form-textarea" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Bug Report</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-                <!-- FAQ Item 8 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Will there be tutorials and documentation?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes! We'll provide comprehensive tutorials, documentation, and video guides for each app. Our focus is on making Boojy Suite easy to learn, with an intuitive interface - you'll be able to learn by doing.</p>
-                    </div>
-                </div>
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-links">
+                <a href="mailto:tyr@boojy.org" class="contact-link">tyr@boojy.org</a>
+                <a href="https://github.com/tsbujacncl/boojy" target="_blank" class="contact-link">GitHub</a>
             </div>
         </div>
     </section>
@@ -273,33 +200,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <!-- Email Signup -->
-            <div class="footer-signup">
-                <h3 class="signup-title">Stay Updated</h3>
-                <p class="signup-description">Get notified about new releases and devlog updates</p>
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="signup-form">
-                    <input type="email" name="email" placeholder="Your email" required class="signup-input">
-                    <div class="signup-checkboxes">
-                        <label class="signup-checkbox">
-                            <input type="checkbox" name="updates" value="releases" checked>
-                            <span>Release updates</span>
-                        </label>
-                        <label class="signup-checkbox">
-                            <input type="checkbox" name="updates" value="devlog" checked>
-                            <span>Devlog updates</span>
-                        </label>
-                    </div>
-                    <button type="submit" class="btn-signup">Subscribe</button>
-                </form>
-            </div>
-
             <p class="footer-links">
-                <a href="about.html">About</a> ·
-                <a href="contact.html">Contact</a> ·
-                <a href="feature-request.html">Request a Feature</a> ·
-                <a href="donate.html">Donate</a> ·
                 <a href="privacy.html">Privacy</a> ·
-                <a href="terms.html">Terms</a>
+                <a href="terms.html">Terms</a> ·
+                <a href="https://github.com/tsbujacncl/boojy" target="_blank">GitHub</a>
             </p>
             <div class="footer-social">
                 <a href="https://twitter.com/boojyorg" target="_blank" aria-label="Twitter" class="social-icon">
@@ -328,10 +232,26 @@
                     </svg>
                 </a>
             </div>
-            <p class="footer-copyright">© Boojy.org — Created by Tyr</p>
+            <p class="footer-copyright">© 2025 Boojy.org — Made by Tyr</p>
         </div>
     </footer>
 
-    <script src="js/main.js?v=2"></script>
+    <script src="js/main.js?v=3"></script>
+    <script>
+        // OS Detection for download buttons
+        (function() {
+            const primaryBtn = document.getElementById('primary-download');
+            const secondaryBtn = document.getElementById('secondary-download');
+            const userAgent = navigator.userAgent.toLowerCase();
+
+            if (userAgent.includes('win')) {
+                primaryBtn.textContent = 'Download for Windows';
+                secondaryBtn.textContent = 'Also available for macOS';
+            } else {
+                primaryBtn.textContent = 'Download for macOS';
+                secondaryBtn.textContent = 'Also available for Windows';
+            }
+        })();
+    </script>
 </body>
 </html>
