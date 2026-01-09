@@ -167,15 +167,24 @@
         <div class="container">
             <div class="signup-box">
                 <h2 class="signup-title">Stay Updated</h2>
-                <p class="signup-description">Get notified about new releases and features. No spam. Unsubscribe anytime.</p>
-                <form action="https://boojy.us7.list-manage.com/subscribe/post?u=2cebb535b536483a415022089&amp;id=e7ebb28e0a&amp;f_id=00bbafe0f0" method="post" target="_blank" class="signup-form-inline">
-                    <input type="email" name="EMAIL" placeholder="Your email" required class="signup-input">
+                <p class="signup-description" id="signup-description">Get notified about new releases and features. No spam. Unsubscribe anytime.</p>
+
+                <!-- Signup Form -->
+                <form id="signup-form" class="signup-form-inline">
+                    <input type="email" name="EMAIL" id="signup-email" placeholder="Your email" required class="signup-input">
                     <!-- Honeypot field for bot protection -->
                     <div style="position: absolute; left: -5000px;" aria-hidden="true">
                         <input type="text" name="b_2cebb535b536483a415022089_e7ebb28e0a" tabindex="-1" value="">
                     </div>
-                    <button type="submit" class="btn-signup">Subscribe</button>
+                    <button type="submit" class="btn-signup" id="signup-btn">Subscribe</button>
                 </form>
+
+                <!-- Success Message (hidden by default) -->
+                <div id="signup-success" class="signup-success" style="display: none;">
+                    <div class="success-icon">✉️</div>
+                    <h3>Check your inbox!</h3>
+                    <p>We sent a confirmation link to <strong id="submitted-email"></strong></p>
+                </div>
             </div>
         </div>
     </section>

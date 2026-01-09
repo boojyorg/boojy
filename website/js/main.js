@@ -604,3 +604,80 @@ if (document.readyState === 'loading') {
     initDownloadSection();
 }
 
+// ===================================
+// Mailchimp Email Signup
+// ===================================
+const MAILCHIMP_URL = 'https://boojy.us7.list-manage.com/subscribe/post-json?u=2cebb535b536483a415022089&id=e7ebb28e0a&f_id=00bbafe0f0';
+
+function initEmailSignup() {
+    const form = document.getElementById('signup-form');
+    const emailInput = document.getElementById('signup-email');
+    const submitBtn = document.getElementById('signup-btn');
+    const successDiv = document.getElementById('signup-success');
+    const submittedEmail = document.getElementById('submitted-email');
+    const description = document.getElementById('signup-description');
+
+    if (!form || !emailInput) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const email = emailInput.value.trim();
+        if (!email) return;
+
+        // Show loading state
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Subscribing...';
+        submitBtn.disabled = true;
+
+        try {
+            // Use JSONP for cross-origin Mailchimp request
+            const url = `${MAILCHIMP_URL}&EMAIL=${encodeURIComponent(email)}&c=mailchimpCallback`;
+
+            // Create callback function
+            window.mailchimpCallback = (response) => {
+                if (response.result === 'success' || response.result === 'error') {
+                    // Hide form and description
+                    form.style.display = 'none';
+                    description.style.display = 'none';
+
+                    // Show success message
+                    submittedEmail.textContent = email;
+                    successDiv.style.display = 'block';
+                }
+
+                // Clean up
+                delete window.mailchimpCallback;
+            };
+
+            // Create script tag for JSONP
+            const script = document.createElement('script');
+            script.src = url;
+            document.body.appendChild(script);
+
+            // Fallback: show success after 2 seconds if callback doesn't fire
+            setTimeout(() => {
+                if (window.mailchimpCallback) {
+                    form.style.display = 'none';
+                    description.style.display = 'none';
+                    submittedEmail.textContent = email;
+                    successDiv.style.display = 'block';
+                    delete window.mailchimpCallback;
+                }
+            }, 2000);
+
+        } catch (error) {
+            console.error('Signup error:', error);
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+}
+
+// Initialize email signup
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEmailSignup);
+} else {
+    initEmailSignup();
+}
+

@@ -1640,6 +1640,87 @@ section {
     min-width: 250px;
 }
 
+/* Signup Success Message */
+.signup-success {
+    text-align: center;
+    padding: var(--spacing-lg);
+    animation: fadeIn 0.4s ease;
+}
+
+.signup-success .success-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.signup-success h3 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.signup-success p {
+    color: var(--color-text-light);
+    font-size: 1rem;
+}
+
+.signup-success strong {
+    color: var(--color-accent);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subscribed Page */
+.subscribed-hero {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-dark);
+    padding: var(--spacing-3xl) 0;
+}
+
+.subscribed-box {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease;
+}
+
+.subscribed-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.subscribed-box h1 {
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.subscribed-box p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+}
+
 /* === Bug Report Section === */
 .bug-report-section {
     background: var(--color-bg);
