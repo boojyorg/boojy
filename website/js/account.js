@@ -63,13 +63,13 @@ async function showDashboard(user) {
             .from('profiles')
             .select('tier, storage_limit_bytes, stripe_customer_id')
             .eq('id', user.id)
-            .single();
+            .maybeSingle();
 
         const { data: usage } = await sb
             .from('storage_usage')
             .select('bytes_used, file_count')
             .eq('user_id', user.id)
-            .single();
+            .maybeSingle();
 
         if (profile) {
             dashTier.textContent = profile.tier === 'orbit' ? 'Orbit' : 'Free';
