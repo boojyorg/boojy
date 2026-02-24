@@ -3,7 +3,7 @@
  */
 
 const SUPABASE_URL = 'https://wupmcvhzstgsdrvcigtm.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_xB7iiTJKkKeC_8ZkuRdFBw_FKuIHbR0';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1cG1jdmh6c3Rnc2RydmNpZ3RtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3ODkzNDMsImV4cCI6MjA4NzM2NTM0M30.D8Zbzblj0oyP28ACJystGWSmqmwdBIyp7mMQmwqtPjM';
 
 // supabase-js UMD exports as window.supabase or window.Supabase
 const createClient = (window.supabase && window.supabase.createClient)
