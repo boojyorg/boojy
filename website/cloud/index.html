@@ -210,43 +210,68 @@
     </footer>
 
     <script src="/js/shared.js"></script>
-    <script>
+    <script type="module">
         const SUPABASE_URL = 'https://wupmcvhzstgsdrvcigtm.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1cG1jdmh6c3Rnc2RydmNpZ3RtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3ODkzNDMsImV4cCI6MjA4NzM2NTM0M30.D8Zbzblj0oyP28ACJystGWSmqmwdBIyp7mMQmwqtPjM';
-        const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        document.getElementById('btn-upgrade').addEventListener('click', async () => {
-            const { data: { session } } = await sb.auth.getSession();
-
-            if (!session) {
-                // Not logged in — send to account page first
-                window.location.href = '/account/';
-                return;
-            }
-
-            const btn = document.getElementById('btn-upgrade');
-            btn.textContent = 'Loading...';
-            btn.disabled = true;
-
-            const res = await fetch(SUPABASE_URL + '/functions/v1/create-checkout', {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Bearer ' + session.access_token,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ country: 'US' }), // Cloudflare will provide real country in production
-            });
-
-            const data = await res.json();
-
-            if (data.url) {
-                window.location.href = data.url;
+        let sb = null;
+        try {
+            const createClient = window.supabase && window.supabase.createClient;
+            if (createClient) {
+                sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
             } else {
-                btn.textContent = 'Upgrade';
-                btn.disabled = false;
-                alert('Something went wrong. Please try again.');
+                console.error('Supabase client not loaded');
             }
-        });
+        } catch (err) {
+            console.error('Failed to init Supabase:', err);
+        }
+
+        const btn = document.getElementById('btn-upgrade');
+        if (btn) {
+            btn.addEventListener('click', async () => {
+                if (!sb) {
+                    window.location.href = '/account/';
+                    return;
+                }
+
+                try {
+                    const { data: { session } } = await sb.auth.getSession();
+
+                    if (!session) {
+                        window.location.href = '/account/';
+                        return;
+                    }
+
+                    btn.textContent = 'Loading...';
+                    btn.disabled = true;
+
+                    const res = await fetch(SUPABASE_URL + '/functions/v1/create-checkout', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer ' + session.access_token,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ country: 'US' }),
+                    });
+
+                    const data = await res.json();
+
+                    if (data.url) {
+                        window.location.href = data.url;
+                    } else {
+                        console.error('Checkout response:', data);
+                        btn.textContent = 'Upgrade';
+                        btn.disabled = false;
+                        alert('Something went wrong. Please try again.');
+                    }
+                } catch (err) {
+                    console.error('Upgrade error:', err);
+                    btn.textContent = 'Upgrade';
+                    btn.disabled = false;
+                    alert('Something went wrong. Please try again.');
+                }
+            });
+        }
     </script>
 </body>
 </html>
