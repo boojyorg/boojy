@@ -5,7 +5,15 @@
 const SUPABASE_URL = 'https://wupmcvhzstgsdrvcigtm.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_xB7iiTJKkKeC_8ZkuRdFBw_FKuIHbR0';
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// supabase-js UMD exports as window.supabase or window.Supabase
+const createClient = (window.supabase && window.supabase.createClient)
+    || (window.Supabase && window.Supabase.createClient);
+
+if (!createClient) {
+    console.error('Supabase client library not loaded');
+}
+
+const sb = createClient ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
 // DOM elements
 const signinView = document.getElementById('signin-view');
@@ -15,7 +23,6 @@ const emailInput = document.getElementById('email-input');
 const passwordInput = document.getElementById('password-input');
 const emailSubmit = document.getElementById('email-submit');
 const emailToggle = document.getElementById('email-toggle');
-const emailToggleLink = document.getElementById('email-toggle-link');
 const authError = document.getElementById('auth-error');
 const btnGoogle = document.getElementById('btn-google');
 const btnApple = document.getElementById('btn-apple');
@@ -36,21 +43,26 @@ let isSignUp = true;
 // Auth State
 // ===================================
 async function checkSession() {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session) {
-        showDashboard(session.user);
-    } else {
-        showSignIn();
+    if (!sb) return;
+    try {
+        const { data: { session } } = await sb.auth.getSession();
+        if (session) {
+            showDashboard(session.user);
+        }
+    } catch (err) {
+        console.error('Session check failed:', err);
     }
 }
 
-supabase.auth.onAuthStateChange((event, session) => {
-    if (session) {
-        showDashboard(session.user);
-    } else {
-        showSignIn();
-    }
-});
+if (sb) {
+    sb.auth.onAuthStateChange((event, session) => {
+        if (session) {
+            showDashboard(session.user);
+        } else {
+            showSignIn();
+        }
+    });
+}
 
 // ===================================
 // Views
@@ -58,8 +70,8 @@ supabase.auth.onAuthStateChange((event, session) => {
 function showSignIn() {
     signinView.style.display = 'block';
     dashboardView.style.display = 'none';
-    emailForm.style.display = 'none';
-    authError.textContent = '';
+    if (emailForm) emailForm.style.display = 'none';
+    if (authError) authError.textContent = '';
 }
 
 async function showDashboard(user) {
@@ -68,135 +80,154 @@ async function showDashboard(user) {
 
     dashEmail.textContent = user.email || 'No email';
 
-    // Fetch profile + storage
-    const { data: profile } = await supabase
-        .from('profiles')
-        .select('tier, storage_limit_bytes, stripe_customer_id')
-        .eq('id', user.id)
-        .single();
+    try {
+        const { data: profile } = await sb
+            .from('profiles')
+            .select('tier, storage_limit_bytes, stripe_customer_id')
+            .eq('id', user.id)
+            .single();
 
-    const { data: usage } = await supabase
-        .from('storage_usage')
-        .select('bytes_used, file_count')
-        .eq('user_id', user.id)
-        .single();
+        const { data: usage } = await sb
+            .from('storage_usage')
+            .select('bytes_used, file_count')
+            .eq('user_id', user.id)
+            .single();
 
-    if (profile) {
-        dashTier.textContent = profile.tier === 'orbit' ? 'Orbit' : 'Free';
-        dashTier.className = 'dash-tier-badge dash-tier-' + profile.tier;
+        if (profile) {
+            dashTier.textContent = profile.tier === 'orbit' ? 'Orbit' : 'Free';
+            dashTier.className = 'dash-tier-badge dash-tier-' + profile.tier;
 
-        // Show/hide manage vs upgrade
-        if (profile.tier === 'orbit' && profile.stripe_customer_id) {
-            dashManage.style.display = 'inline-block';
-            dashUpgrade.style.display = 'none';
-        } else {
-            dashManage.style.display = 'none';
-            dashUpgrade.style.display = 'inline-block';
+            if (profile.tier === 'orbit' && profile.stripe_customer_id) {
+                dashManage.style.display = 'inline-block';
+                dashUpgrade.style.display = 'none';
+            } else {
+                dashManage.style.display = 'none';
+                dashUpgrade.style.display = 'inline-block';
+            }
+
+            if (usage) {
+                const used = usage.bytes_used;
+                const limit = profile.storage_limit_bytes;
+                const pct = Math.min(100, (used / limit) * 100);
+                dashStorageBar.style.width = pct + '%';
+                dashStorageText.textContent = formatBytes(used) + ' / ' + formatBytes(limit);
+            }
         }
-
-        if (usage) {
-            const used = usage.bytes_used;
-            const limit = profile.storage_limit_bytes;
-            const pct = Math.min(100, (used / limit) * 100);
-            dashStorageBar.style.width = pct + '%';
-            dashStorageText.textContent = formatBytes(used) + ' / ' + formatBytes(limit);
-        }
+    } catch (err) {
+        console.error('Failed to load profile:', err);
     }
 }
 
 // ===================================
 // Email Auth
 // ===================================
-btnEmail.addEventListener('click', () => {
-    emailForm.style.display = emailForm.style.display === 'none' ? 'flex' : 'none';
-    authError.textContent = '';
-});
+if (btnEmail) {
+    btnEmail.addEventListener('click', () => {
+        emailForm.style.display = emailForm.style.display === 'none' ? 'flex' : 'none';
+        authError.textContent = '';
+    });
+}
 
-emailToggleLink.addEventListener('click', (e) => {
+// Sign in / Sign up toggle
+function handleToggle(e) {
     e.preventDefault();
     isSignUp = !isSignUp;
     emailSubmit.textContent = isSignUp ? 'Sign up' : 'Sign in';
     emailToggle.innerHTML = isSignUp
         ? 'Already have an account? <a href="#" id="email-toggle-link">Sign in</a>'
         : 'Don\'t have an account? <a href="#" id="email-toggle-link">Sign up</a>';
-    // Re-attach listener to new link
-    document.getElementById('email-toggle-link').addEventListener('click', arguments.callee);
+    document.getElementById('email-toggle-link').addEventListener('click', handleToggle);
     authError.textContent = '';
-});
+}
 
-emailForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    authError.textContent = '';
-    emailSubmit.disabled = true;
-    emailSubmit.textContent = 'Loading...';
+if (document.getElementById('email-toggle-link')) {
+    document.getElementById('email-toggle-link').addEventListener('click', handleToggle);
+}
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
+if (emailForm) {
+    emailForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!sb) return;
+        authError.textContent = '';
+        emailSubmit.disabled = true;
+        emailSubmit.textContent = 'Loading...';
 
-    if (!email || !password) {
-        authError.textContent = 'Please fill in both fields.';
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+
+        if (!email || !password) {
+            authError.textContent = 'Please fill in both fields.';
+            emailSubmit.disabled = false;
+            emailSubmit.textContent = isSignUp ? 'Sign up' : 'Sign in';
+            return;
+        }
+
+        if (password.length < 6) {
+            authError.textContent = 'Password must be at least 6 characters.';
+            emailSubmit.disabled = false;
+            emailSubmit.textContent = isSignUp ? 'Sign up' : 'Sign in';
+            return;
+        }
+
+        let result;
+        if (isSignUp) {
+            result = await sb.auth.signUp({ email, password });
+        } else {
+            result = await sb.auth.signInWithPassword({ email, password });
+        }
+
+        if (result.error) {
+            authError.textContent = result.error.message;
+        }
         emailSubmit.disabled = false;
         emailSubmit.textContent = isSignUp ? 'Sign up' : 'Sign in';
-        return;
-    }
-
-    if (password.length < 6) {
-        authError.textContent = 'Password must be at least 6 characters.';
-        emailSubmit.disabled = false;
-        emailSubmit.textContent = isSignUp ? 'Sign up' : 'Sign in';
-        return;
-    }
-
-    let result;
-    if (isSignUp) {
-        result = await supabase.auth.signUp({ email, password });
-    } else {
-        result = await supabase.auth.signInWithPassword({ email, password });
-    }
-
-    if (result.error) {
-        authError.textContent = result.error.message;
-        emailSubmit.disabled = false;
-        emailSubmit.textContent = isSignUp ? 'Sign up' : 'Sign in';
-    }
-    // On success, onAuthStateChange handles the rest
-});
+    });
+}
 
 // ===================================
 // OAuth
 // ===================================
-btnGoogle.addEventListener('click', async () => {
-    await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: { redirectTo: window.location.origin + '/account/' }
+if (btnGoogle) {
+    btnGoogle.addEventListener('click', async () => {
+        if (!sb) return;
+        await sb.auth.signInWithOAuth({
+            provider: 'google',
+            options: { redirectTo: window.location.origin + '/account/' }
+        });
     });
-});
+}
 
-btnApple.addEventListener('click', async () => {
-    await supabase.auth.signInWithOAuth({
-        provider: 'apple',
-        options: { redirectTo: window.location.origin + '/account/' }
+if (btnApple) {
+    btnApple.addEventListener('click', async () => {
+        if (!sb) return;
+        await sb.auth.signInWithOAuth({
+            provider: 'apple',
+            options: { redirectTo: window.location.origin + '/account/' }
+        });
     });
-});
+}
 
 // ===================================
 // Sign Out
 // ===================================
-btnSignOut.addEventListener('click', async () => {
-    await supabase.auth.signOut();
-});
+if (btnSignOut) {
+    btnSignOut.addEventListener('click', async () => {
+        if (!sb) return;
+        await sb.auth.signOut();
+    });
+}
 
 // ===================================
 // Manage Subscription (Stripe Portal)
 // ===================================
-dashManage.addEventListener('click', async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return;
-
-    // Call a simple edge function or redirect to Stripe portal
-    // For now, redirect to Stripe's portal directly
-    window.location.href = 'https://billing.stripe.com/p/login/test_00g00000000000';
-});
+if (dashManage) {
+    dashManage.addEventListener('click', async () => {
+        if (!sb) return;
+        const { data: { session } } = await sb.auth.getSession();
+        if (!session) return;
+        window.location.href = 'https://billing.stripe.com/p/login/test_00g00000000000';
+    });
+}
 
 // ===================================
 // Helpers
