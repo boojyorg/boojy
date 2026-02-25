@@ -31,9 +31,11 @@ const authError = document.getElementById('auth-error');
 const btnGoogle = document.getElementById('btn-google');
 const btnApple = document.getElementById('btn-apple');
 const btnEmail = document.getElementById('btn-email');
+const nameInput = document.getElementById('name-input');
 const btnSignOut = document.getElementById('btn-signout');
 
 // Dashboard elements
+const dashName = document.getElementById('dash-name');
 const dashEmail = document.getElementById('dash-email');
 const dashTier = document.getElementById('dash-tier');
 const dashStorageBar = document.getElementById('dash-storage-bar');
@@ -41,7 +43,7 @@ const dashStorageText = document.getElementById('dash-storage-text');
 const dashManage = document.getElementById('dash-manage');
 const dashUpgrade = document.getElementById('dash-upgrade');
 
-let isSignUp = true;
+let isSignUp = false;
 
 // ===================================
 // Views
@@ -57,11 +59,12 @@ async function showDashboard(user) {
     if (signinView) signinView.style.display = 'none';
     if (dashboardView) dashboardView.style.display = 'block';
     if (dashEmail) dashEmail.textContent = user.email || 'No email';
+    if (dashName) dashName.textContent = user.user_metadata?.display_name || '—';
 
     try {
         const { data: profile } = await sb
             .from('profiles')
-            .select('tier, storage_limit_bytes, stripe_customer_id')
+            .select('tier, storage_limit_bytes, stripe_customer_id, display_name')
             .eq('id', user.id)
             .maybeSingle();
 
@@ -72,6 +75,7 @@ async function showDashboard(user) {
             .maybeSingle();
 
         if (profile) {
+            if (dashName && profile.display_name) dashName.textContent = profile.display_name;
             dashTier.textContent = profile.tier === 'orbit' ? 'Orbit' : 'Free';
             dashTier.className = 'dash-tier-badge dash-tier-' + profile.tier;
 
@@ -111,11 +115,12 @@ if (btnEmail) {
 function handleToggle(e) {
     e.preventDefault();
     isSignUp = !isSignUp;
-    if (emailSubmit) emailSubmit.textContent = isSignUp ? 'Sign up' : 'Sign in';
+    if (emailSubmit) emailSubmit.textContent = isSignUp ? 'Create Account' : 'Sign In';
+    if (nameInput) nameInput.style.display = isSignUp ? 'block' : 'none';
     if (emailToggle) {
         emailToggle.innerHTML = isSignUp
             ? 'Already have an account? <a href="#" id="email-toggle-link">Sign in</a>'
-            : 'Don\'t have an account? <a href="#" id="email-toggle-link">Sign up</a>';
+            : 'Don\'t have an account? <a href="#" id="email-toggle-link">Create one</a>';
         var link = document.getElementById('email-toggle-link');
         if (link) link.addEventListener('click', handleToggle);
     }
@@ -148,7 +153,7 @@ if (emailForm) {
             if (authError) authError.textContent = 'Please fill in both fields.';
             if (emailSubmit) {
                 emailSubmit.disabled = false;
-                emailSubmit.textContent = isSignUp ? 'Sign up' : 'Sign in';
+                emailSubmit.textContent = isSignUp ? 'Create Account' : 'Sign In';
             }
             return;
         }
@@ -157,7 +162,7 @@ if (emailForm) {
             if (authError) authError.textContent = 'Password must be at least 6 characters.';
             if (emailSubmit) {
                 emailSubmit.disabled = false;
-                emailSubmit.textContent = isSignUp ? 'Sign up' : 'Sign in';
+                emailSubmit.textContent = isSignUp ? 'Create Account' : 'Sign In';
             }
             return;
         }
@@ -165,13 +170,29 @@ if (emailForm) {
         try {
             let result;
             if (isSignUp) {
-                result = await sb.auth.signUp({ email, password });
+                const name = nameInput ? nameInput.value.trim() : '';
+                result = await sb.auth.signUp({
+                    email,
+                    password,
+                    options: { data: { display_name: name || undefined } }
+                });
             } else {
                 result = await sb.auth.signInWithPassword({ email, password });
             }
 
             if (result.error) {
                 if (authError) authError.textContent = result.error.message;
+            } else if (isSignUp && !result.data?.session) {
+                // Email confirmation required
+                if (authError) {
+                    authError.style.color = 'var(--color-accent, #A4CACE)';
+                    authError.textContent = 'Check your email for a confirmation link.';
+                }
+                if (emailSubmit) {
+                    emailSubmit.disabled = true;
+                    emailSubmit.textContent = 'Email sent';
+                }
+                return;
             }
         } catch (err) {
             console.error('Auth error:', err);
@@ -180,7 +201,7 @@ if (emailForm) {
 
         if (emailSubmit) {
             emailSubmit.disabled = false;
-            emailSubmit.textContent = isSignUp ? 'Sign up' : 'Sign in';
+            emailSubmit.textContent = isSignUp ? 'Create Account' : 'Sign In';
         }
     });
 }

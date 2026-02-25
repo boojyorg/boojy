@@ -169,6 +169,12 @@
     text-align: center;
 }
 
+.pricing-btn-current {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+}
+
 /* === Ethics Section === */
 .ethics-section {
     background: var(--color-bg-dark);

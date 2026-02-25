@@ -73,7 +73,7 @@
                         <li><span class="check">✓</span> Sync across devices</li>
                         <li><span class="check">✓</span> All app features</li>
                     </ul>
-                    <a href="/account/" class="btn btn-secondary pricing-btn">Get Started</a>
+                    <a href="/account/" id="btn-free" class="btn btn-secondary pricing-btn">Get Started</a>
                 </div>
 
                 <div class="pricing-card pricing-card-highlight">
@@ -226,9 +226,44 @@
             console.error('Failed to init Supabase:', err);
         }
 
-        const btn = document.getElementById('btn-upgrade');
-        if (btn) {
-            btn.addEventListener('click', async () => {
+        const btnFree = document.getElementById('btn-free');
+        const btnUpgrade = document.getElementById('btn-upgrade');
+
+        // Check auth state and update buttons
+        if (sb) {
+            try {
+                const { data: { session } } = await sb.auth.getSession();
+                if (session) {
+                    const { data: profile } = await sb
+                        .from('profiles')
+                        .select('tier')
+                        .eq('id', session.user.id)
+                        .maybeSingle();
+
+                    if (profile?.tier === 'orbit') {
+                        if (btnUpgrade) {
+                            btnUpgrade.textContent = 'Current Plan';
+                            btnUpgrade.classList.add('pricing-btn-current');
+                            btnUpgrade.disabled = true;
+                        }
+                    } else {
+                        if (btnFree) {
+                            btnFree.textContent = 'Current Plan';
+                            btnFree.classList.add('pricing-btn-current');
+                            btnFree.removeAttribute('href');
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to check plan:', err);
+            }
+        }
+
+        // Upgrade button click handler
+        if (btnUpgrade) {
+            btnUpgrade.addEventListener('click', async () => {
+                if (btnUpgrade.classList.contains('pricing-btn-current')) return;
+
                 if (!sb) {
                     window.location.href = '/account/';
                     return;
@@ -242,8 +277,8 @@
                         return;
                     }
 
-                    btn.textContent = 'Loading...';
-                    btn.disabled = true;
+                    btnUpgrade.textContent = 'Loading...';
+                    btnUpgrade.disabled = true;
 
                     const res = await fetch(SUPABASE_URL + '/functions/v1/create-checkout', {
                         method: 'POST',
@@ -261,14 +296,14 @@
                         window.location.href = data.url;
                     } else {
                         console.error('Checkout response:', data);
-                        btn.textContent = 'Upgrade';
-                        btn.disabled = false;
+                        btnUpgrade.textContent = 'Upgrade';
+                        btnUpgrade.disabled = false;
                         alert('Something went wrong. Please try again.');
                     }
                 } catch (err) {
                     console.error('Upgrade error:', err);
-                    btn.textContent = 'Upgrade';
-                    btn.disabled = false;
+                    btnUpgrade.textContent = 'Upgrade';
+                    btnUpgrade.disabled = false;
                     alert('Something went wrong. Please try again.');
                 }
             });

@@ -72,10 +72,11 @@
                         </button>
 
                         <form id="email-form" class="email-form" style="display: none;">
+                            <input type="text" id="name-input" class="form-input" placeholder="Name" style="display: none;">
                             <input type="email" id="email-input" class="form-input" placeholder="Email" required>
                             <input type="password" id="password-input" class="form-input" placeholder="Password" minlength="6" required>
-                            <button type="submit" id="email-submit" class="btn btn-primary" style="width: 100%;">Sign up</button>
-                            <p id="email-toggle" class="email-toggle">Already have an account? <a href="#" id="email-toggle-link">Sign in</a></p>
+                            <button type="submit" id="email-submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+                            <p id="email-toggle" class="email-toggle">Don't have an account? <a href="#" id="email-toggle-link">Create one</a></p>
                             <p id="auth-error" class="auth-error"></p>
                         </form>
 
@@ -99,6 +100,10 @@
                 </div>
 
                 <div class="dash-profile">
+                    <div class="dash-row">
+                        <span class="dash-label">Name</span>
+                        <span id="dash-name" class="dash-value">—</span>
+                    </div>
                     <div class="dash-row">
                         <span class="dash-label">Email</span>
                         <span id="dash-email" class="dash-value">—</span>
