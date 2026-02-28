@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
     <meta name="description" content="Boojy - Free, open-source creative tools. Audio, Notes, and Cloud.">
     <meta property="og:title" content="Boojy - Free Creative Tools">
     <meta property="og:description" content="Free, open-source creative software. Music production, note-taking, and cloud sync.">
@@ -51,19 +52,19 @@
     <section class="hub-hero">
         <div class="hub-hero-glow" aria-hidden="true"></div>
         <div class="container">
-            <div class="hub-hero-title">
+            <div class="hub-hero-title reveal">
                 <img src="/images/boojy-logo.svg" alt="Boojy" class="hub-hero-logo">
                 <img src="/images/Boojy_Image_Logo.png" alt="" class="hub-hero-icon">
             </div>
-            <p class="hub-tagline">Free, open-source creative software.</p>
-            <p class="hub-tagline-sub">Made by Tyr.</p>
+            <p class="hub-tagline reveal reveal-d1">Free, open-source creative software.</p>
+            <p class="hub-tagline-sub reveal reveal-d2">Made by Tyr.</p>
         </div>
     </section>
 
     <!-- Products -->
     <section class="products-section">
         <div class="container">
-            <div class="product-cards">
+            <div class="product-cards reveal reveal-d3">
                 <a href="/audio/" class="product-card" data-product="audio">
                     <div class="product-card-img">
                         <img src="/images/screenshot-main-interface.png" alt="Boojy Audio interface">
@@ -128,7 +129,6 @@
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
                 <span class="footer-sep">·</span>
-                <span class="footer-contact-label">Contact:</span>
                 <a href="mailto:tyr@boojy.org" class="footer-email">tyr@boojy.org</a>
                 <span class="footer-sep">·</span>
                 <span class="footer-copy">&copy; 2026 Boojy</span>
@@ -138,6 +138,7 @@
 
     <script src="/js/starfield.js?v=5"></script>
     <script src="/js/shared.js?v=5"></script>
+    <script src="/js/hub.js?v=5"></script>
     <script src="/js/dev-tools.js?v=5"></script>
 </body>
 </html>
