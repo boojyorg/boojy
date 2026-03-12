@@ -302,6 +302,10 @@ if (platformsToggle && platformsPanel) {
             if (platformLabel && matchingItem.dataset.label) {
                 platformLabel.textContent = matchingItem.dataset.label;
             }
+            const btn = document.getElementById('download-btn');
+            if (btn && matchingItem.dataset.href) {
+                btn.href = matchingItem.dataset.href;
+            }
         }
     }
 })();
