@@ -1,0 +1,112 @@
+/* ============================================
+   Legal pages — Privacy Policy & Terms of Service
+   ============================================ */
+
+/* Hero */
+.legal-hero {
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: var(--spacing-lg);
+    background: var(--color-bg-dark);
+}
+
+.legal-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+}
+
+.legal-hero p {
+    color: var(--color-text-light);
+}
+
+/* Content section */
+.legal-content {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-bg);
+}
+
+.legal-content--dark {
+    padding: var(--spacing-2xl) 0;
+    background: var(--color-bg-dark);
+}
+
+/* Body text container */
+.legal-body {
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--color-text);
+    line-height: 1.8;
+}
+
+.legal-body--narrow {
+    max-width: 700px;
+}
+
+/* Typography */
+.legal-body h2 {
+    color: var(--color-primary);
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+}
+
+.legal-body h2:first-child {
+    margin-top: 0;
+}
+
+.legal-body h3 {
+    color: var(--color-accent);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+}
+
+.legal-body p {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-light);
+}
+
+.legal-body ul {
+    margin-left: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-light);
+}
+
+.legal-body li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.legal-body strong {
+    color: var(--color-text);
+}
+
+.legal-body a {
+    color: var(--color-accent);
+}
+
+/* Intro paragraph */
+.legal-intro {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Callout box */
+.legal-callout {
+    padding: var(--spacing-lg);
+    background: var(--color-bg-alt);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Terms-specific: link style override */
+.legal-body a.legal-link--bold {
+    text-decoration: none;
+    font-weight: 600;
+}
