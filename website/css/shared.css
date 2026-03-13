@@ -397,7 +397,8 @@ body {
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
-    width: 290px;
+    width: max-content;
+    min-width: 240px;
     background: #1E202A;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
@@ -449,11 +450,14 @@ body {
     color: #9B9EB0;
 }
 .platform-item:hover { background: rgba(255, 255, 255, 0.08); }
-.platform-item strong { color: #E8EAF0; font-weight: 600; display: inline-block; min-width: 5em; }
+.platform-item > span { display: flex; align-items: center; gap: 0.3rem; }
+.platform-item strong { color: #E8EAF0; font-weight: 600; min-width: 5em; }
 .platform-icon { width: 18px; height: 18px; flex-shrink: 0; }
 .platform-icon-win { width: 14.4px; height: 14.4px; }
 .platform-icon-linux { width: 16.74px; height: 16.74px; }
 .platform-disabled { opacity: 0.35; cursor: default; pointer-events: none; }
+.platform-pill { margin-left: auto; flex-shrink: 0; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; padding: 0.15em 0.5em; border-radius: 999px; background: rgba(255,255,255,0.08); color: #9B9EB0; white-space: nowrap; }
+.platform-github { }
 
 /* Download icon in buttons */
 .btn-download .download-icon { display: inline-flex; align-items: center; }
@@ -626,6 +630,94 @@ section {
     font-size: 0.8rem;
 }
 
+/* === Product Cloud Card (shared) === */
+.product-cloud-section {
+    padding: 0 0 var(--spacing-2xl);
+    position: relative;
+    z-index: 1;
+}
+
+.product-cloud-card {
+    margin: 0 auto;
+    max-width: 900px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem 3rem;
+    text-align: center;
+    transition: all 0.35s ease;
+}
+
+.product-cloud-card:hover {
+    border-color: rgba(255, 255, 255, 0.85);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(255, 255, 255, 0.06);
+}
+
+.product-cloud-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(0.5rem + 11px);
+    margin: -1px 0 0;
+    padding-left: 9px;
+    position: relative;
+    top: -2px;
+}
+
+.product-cloud-heading-boojy {
+    height: 2.945rem;
+    width: auto;
+    position: relative;
+    top: 3px;
+}
+
+.product-cloud-heading-cloud {
+    height: 2.1rem;
+    width: auto;
+    position: relative;
+    top: -2px;
+}
+
+.product-cloud-devices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 0 22px;
+}
+
+.product-cloud-devices .device-icon {
+    width: 32px;
+    height: 32px;
+    color: #B0B3C1;
+}
+
+.product-cloud-devices .sync-arrow {
+    color: #8A8D9B;
+    font-size: 16px;
+}
+
+.product-cloud-description {
+    color: var(--color-text-light);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.product-cloud-cta {
+    display: inline-block;
+    padding: 0.6rem 2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
 /* === View Transitions === */
 @view-transition {
     navigation: auto;
@@ -746,6 +838,10 @@ section {
 
     .section-title {
         font-size: 1.75rem;
+    }
+
+    .product-cloud-card {
+        padding: 1.5rem;
     }
 
     .hero-buttons { flex-direction: column; align-items: center; }

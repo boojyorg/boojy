@@ -170,94 +170,10 @@
     z-index: 1;
 }
 
-/* === Cloud Card === */
-.notes-cloud-section {
-    padding: 0 0 var(--spacing-2xl);
-    position: relative;
-    z-index: 1;
-}
-
-.notes-cloud-card {
-    margin: 0 auto;
-    max-width: 900px;
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-lg);
-    padding: 2.5rem 3rem;
-    text-align: center;
-    transition: all 0.35s ease;
-}
-
-.notes-cloud-card:hover {
-    border-color: rgba(255, 255, 255, 0.85);
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(255, 255, 255, 0.06);
-}
-
-.notes-cloud-heading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: calc(0.5rem + 11px);
-    margin: -1px 0 0;
-    padding-left: 9px;
-    position: relative;
-    top: -2px;
-}
-
-.notes-cloud-heading-boojy {
-    height: 2.945rem;
-    width: auto;
-    position: relative;
-    top: 3px;
-}
-
-.notes-cloud-heading-cloud {
-    height: 2.1rem;
-    width: auto;
-    position: relative;
-    top: -2px;
-}
-
-.notes-cloud-devices {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 20px 0 22px;
-}
-
-.notes-cloud-devices .device-icon {
-    width: 32px;
-    height: 32px;
-    color: #B0B3C1;
-}
-
-.notes-cloud-devices .sync-arrow {
-    color: #8A8D9B;
-    font-size: 16px;
-}
-
-.notes-cloud-description {
-    color: var(--color-text-light);
-    font-size: 1rem;
-    line-height: 1.7;
-    max-width: 480px;
-    margin: 0 auto var(--spacing-lg);
-}
-
+/* === Cloud Card Overrides === */
 .notes-cloud-cta {
-    display: inline-block;
-    padding: 0.6rem 2rem;
     background: rgba(255, 255, 255, 0.85);
-    border: none;
-    border-radius: var(--border-radius);
     color: #0F1119;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
 }
 
 .notes-cloud-cta:hover {
@@ -315,9 +231,5 @@
         grid-template-columns: 1fr;
         max-width: 400px;
         margin: 0 auto;
-    }
-
-    .notes-cloud-card {
-        padding: 1.5rem;
     }
 }

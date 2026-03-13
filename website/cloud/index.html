@@ -14,8 +14,8 @@
     <title>Boojy Cloud – Sync Your Creative Work</title>
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="apple-touch-icon" href="/images/favicon.png">
-    <link rel="stylesheet" href="/css/shared.css?v=5">
-    <link rel="stylesheet" href="/css/cloud.css?v=5">
+    <link rel="stylesheet" href="/css/shared.css?v=89a0dc2">
+    <link rel="stylesheet" href="/css/cloud.css?v=89a0dc2">
     <!-- Supabase Auth -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.43.4/dist/umd/supabase.min.js"></script>
     <!-- Umami Analytics -->
@@ -212,9 +212,11 @@
         </div>
     </footer>
 
-    <script src="/js/shared.js?v=5"></script>
+    <script src="/js/shared.js?v=89a0dc2"></script>
     <script type="module">
         const SUPABASE_URL = 'https://wupmcvhzstgsdrvcigtm.supabase.co';
+        // This is the Supabase anon (public) key — safe to expose in client-side code.
+        // Access is restricted by Row Level Security (RLS) policies.
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1cG1jdmh6c3Rnc2RydmNpZ3RtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3ODkzNDMsImV4cCI6MjA4NzM2NTM0M30.D8Zbzblj0oyP28ACJystGWSmqmwdBIyp7mMQmwqtPjM';
 
         let sb = null;

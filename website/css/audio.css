@@ -169,90 +169,15 @@
     z-index: 1;
 }
 
-/* === Cloud Card === */
-.audio-cloud-section {
-    padding: 0 0 var(--spacing-2xl);
-    position: relative;
-    z-index: 1;
-}
-
-.audio-cloud-card {
-    margin: 0 auto;
-    max-width: 900px;
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-lg);
-    padding: 2.5rem 3rem;
-    text-align: center;
-    transition: all 0.35s ease;
-}
-
+/* === Cloud Card Overrides === */
 .audio-cloud-card:hover {
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.audio-cloud-heading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: calc(0.5rem + 11px);
-    margin: -1px 0 0;
-    padding-left: 9px;
-    position: relative;
-    top: -2px;
-}
-
-.audio-cloud-heading-boojy {
-    height: 2.945rem;
-    width: auto;
-    position: relative;
-    top: 3px;
-}
-
-.audio-cloud-heading-cloud {
-    height: 2.1rem;
-    width: auto;
-    position: relative;
-    top: -2px;
-}
-
-.audio-cloud-devices {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 20px 0 22px;
-}
-
-.audio-cloud-devices .device-icon {
-    width: 32px;
-    height: 32px;
-    color: #B0B3C1;
-}
-
-.audio-cloud-devices .sync-arrow {
-    color: #8A8D9B;
-    font-size: 16px;
-}
-
-.audio-cloud-description {
-    color: var(--color-text-light);
-    font-size: 1rem;
-    line-height: 1.7;
-    max-width: 480px;
-    margin: 0 auto var(--spacing-lg);
-}
-
 .audio-cloud-cta {
-    display: inline-block;
-    padding: 0.6rem 2rem;
     background: rgba(255, 255, 255, 0.15);
-    border: none;
-    border-radius: var(--border-radius);
     color: var(--color-text-light);
-    font-weight: 600;
-    font-size: 0.9rem;
     cursor: default;
 }
 
@@ -343,9 +268,5 @@
         grid-template-columns: 1fr;
         max-width: 400px;
         margin: 0 auto;
-    }
-
-    .audio-cloud-card {
-        padding: 1.5rem;
     }
 }
