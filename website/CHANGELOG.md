@@ -3,15 +3,20 @@
 ## Unreleased
 
 ### Features
+- **Feedback form backend built** — a Turnstile-verified Supabase Edge Function + `feedback` table
+  now exists in boojy-cloud (branch `feedback-function`), ready to deploy. Once deployed, flip
+  `FEEDBACK_BACKEND_LIVE = true` in `Feedback.tsx` and swap in the real Turnstile site key.
 - **First automated test suite** — vitest unit tests for the build-time GitHub release fetch
   (every fallback path) and a Playwright smoke suite that loads each page from the built site,
   checks titles, the orbit logo, download CTAs, the feedback form, and the 404. Both run in CI,
   so "the site silently broke" (the June review's headline finding) now fails a PR instead.
 
 ### Bug Fixes
-- **Feedback form actually delivers** — Send now opens the visitor's email app pre-filled to
-  tyr@boojy.org (the `feedback` Edge Function was never built, so every submission errored and was
-  lost; the always-pass Turnstile **test** key also no longer ships). Real backend tracked as P4.
+- **Feedback form UI polished** — heading renamed to "Feedback" (subtitle carries the playful copy),
+  Send button centred, post-send message updated to "Thanks for your feedback. I read each one.",
+  and `autoComplete="off"` stops the browser re-filling fields on refresh.
+- **Feedback form actually delivers (interim)** — Send now opens the visitor's email app pre-filled
+  to tyr@boojy.org until the real backend is deployed.
 - **Design card CTA visible** — the homepage Design card's "Learn more" button had no accent fill
   (near-black on dark, read as disabled); it now matches the other three products.
 - **Honest platform label on /audio** — Linux/unknown-OS/no-JS visitors no longer see "(Silicon)"
