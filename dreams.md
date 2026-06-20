@@ -34,11 +34,10 @@ P6 tail (CWV measurement).
 - [ ] **(P2) Auto-rebuild on release.** CF Pages Deploy Hook POSTed from each app repo's release
   workflow so a new tag rebuilds boojy.org without a manual redeploy. Until then, baked versions only
   refresh on the next deploy.
-- [ ] **(P4, boojy-cloud — separate PR) Feedback Edge Function.** Interim shipped (PR #22):
-  Send opens a pre-filled email to tyr@boojy.org behind `FEEDBACK_BACKEND_LIVE = false`, so
-  nothing is lost meanwhile. The real backend remains: verify the Turnstile token → insert into a
-  new `feedback` table + migration, then flip the flag and swap in real Turnstile **site key**
-  (in `Feedback.tsx`) + **secret key** on the Edge Function (both via Cloudflare).
+- [x] **(P4) Feedback Edge Function — SHIPPED 2026-06-20.** Turnstile-verified Edge Function +
+  `public.feedback` table (boojy-cloud PR #3). `FEEDBACK_BACKEND_LIVE = true`, real Turnstile
+  site key live (boojy-web PR #34). UI: heading → "Feedback", button centred, post-send copy
+  updated, refresh-refill fixed.
 - [x] **(user) Drop the Design screenshot** — landed as
   `website/public/images/design-screenshot-v0.4.png` with the `/design` page (PR #16).
 - [ ] **(user) Google Search Console.** Domain property added + verifying. Submit the **full-URL**
