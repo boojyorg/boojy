@@ -1,17 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { supabase } from '../lib/supabase';
 
-// The `feedback` Edge Function (boojy-cloud, P4) is NOT built yet — invoking it fails and
-// the visitor's message is lost. Until it ships, Send hands the message to the visitor's
-// own email app (mailto) instead. Flip this to true in the SAME release that deploys the
-// Edge Function and swaps in the real Turnstile keys (see .claude/rules/feedback.md).
-const FEEDBACK_BACKEND_LIVE: boolean = false;
+const FEEDBACK_BACKEND_LIVE: boolean = true;
 const FEEDBACK_EMAIL = 'tyr@boojy.org';
 
-// Cloudflare Turnstile TEST key — always passes and renders a visible widget, so the
-// form is reviewable in dev. Swap for the real Boojy site key once the Turnstile widget
-// is created in the Cloudflare dashboard (and set the matching secret on the Edge Function).
-const TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
+const TURNSTILE_SITE_KEY = '0x4AAAAAADoLE2URVx32I0Kn';
 const TURNSTILE_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
 
 interface TurnstileApi {
@@ -132,7 +125,7 @@ export function Feedback() {
     return (
       <div className="feedback-success">
         <div className="feedback-success-icon">✦</div>
-        <p>Thanks — your message landed. I read every one.</p>
+        <p>Thanks for your feedback. I read each one.</p>
       </div>
     );
   }
@@ -142,15 +135,15 @@ export function Feedback() {
       <div className="feedback-success">
         <div className="feedback-success-icon">✦</div>
         <p>
-          Your email app should have opened with your message — just hit send. Nothing opened? Email{' '}
-          <a href={`mailto:${FEEDBACK_EMAIL}`}>{FEEDBACK_EMAIL}</a> directly.
+          Your email app should have opened with your message — just hit send. Nothing opened?{' '}
+          <a href={`mailto:${FEEDBACK_EMAIL}`}>Email me directly.</a>
         </p>
       </div>
     );
   }
 
   return (
-    <form className="feedback-form" onSubmit={onSubmit}>
+    <form className="feedback-form" onSubmit={onSubmit} autoComplete="off">
       <div className="feedback-row">
         <input
           className="feedback-input"
@@ -159,6 +152,7 @@ export function Feedback() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           aria-label="Email (optional)"
+          autoComplete="off"
         />
         <select
           className="feedback-select"
