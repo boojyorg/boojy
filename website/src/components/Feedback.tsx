@@ -132,7 +132,7 @@ export function Feedback() {
     return (
       <div className="feedback-success">
         <div className="feedback-success-icon">✦</div>
-        <p>Thanks — your message landed. I read every one.</p>
+        <p>Thanks for your feedback. I read each one.</p>
       </div>
     );
   }
@@ -142,15 +142,15 @@ export function Feedback() {
       <div className="feedback-success">
         <div className="feedback-success-icon">✦</div>
         <p>
-          Your email app should have opened with your message — just hit send. Nothing opened? Email{' '}
-          <a href={`mailto:${FEEDBACK_EMAIL}`}>{FEEDBACK_EMAIL}</a> directly.
+          Your email app should have opened with your message — just hit send. Nothing opened?{' '}
+          <a href={`mailto:${FEEDBACK_EMAIL}`}>Email me directly.</a>
         </p>
       </div>
     );
   }
 
   return (
-    <form className="feedback-form" onSubmit={onSubmit}>
+    <form className="feedback-form" onSubmit={onSubmit} autoComplete="off">
       <div className="feedback-row">
         <input
           className="feedback-input"
@@ -159,6 +159,7 @@ export function Feedback() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           aria-label="Email (optional)"
+          autoComplete="off"
         />
         <select
           className="feedback-select"

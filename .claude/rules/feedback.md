@@ -9,12 +9,16 @@ paths:
 - **`Feedback.tsx`** is a React island (`client:visible`) in the homepage `#feedback` section. Fields:
   type (Bug/Idea/Other), optional email, message, + a **Cloudflare Turnstile** widget. On submit it
   calls `supabase.functions.invoke('feedback', { body: { type, email, message, turnstileToken } })`.
-- **Interim mailto mode (2026-06).** `FEEDBACK_BACKEND_LIVE = false` in `Feedback.tsx` routes Send
-  to a pre-filled `mailto:tyr@boojy.org` (no Turnstile loaded — the visitor's own mail client is the
-  spam gate) because the Edge Function doesn't exist yet and real submissions were silently lost.
-  **Flip it to `true` in the same release** that deploys the `feedback` Edge Function AND swaps the
-  real Turnstile keys in — not before. Backend-live mode also handles a blocked Turnstile script
-  (ad blockers) with a visible mailto escape hatch.
+- **Interim mailto mode (active until deploy).** `FEEDBACK_BACKEND_LIVE = false` in `Feedback.tsx`
+  routes Send to a pre-filled `mailto:tyr@boojy.org` (no Turnstile loaded — the visitor's own mail
+  client is the spam gate). The Edge Function is now built in `boojy-cloud` (branch
+  `feedback-function`) but not yet deployed. **Flip it to `true` in the same release** that:
+  (a) runs `supabase db push` for the `feedback` table migration,
+  (b) sets `TURNSTILE_SECRET_KEY` via `supabase secrets set`,
+  (c) runs `supabase functions deploy feedback`, AND
+  (d) swaps the real Turnstile site key into `Feedback.tsx`.
+  Backend-live mode also handles a blocked Turnstile script (ad blockers) with a visible mailto
+  escape hatch.
 - **Email field stays optional** (2026-06 decision): mandatory email kills drive-by bug reports and
   doesn't reduce spam — Turnstile is the spam defense.
 - **Anti-spam by design.** A naive public Supabase insert is spammable, so submissions go through an
@@ -26,6 +30,7 @@ paths:
   on the Edge Function. The script is loaded explicitly (`render=explicit`) and rendered into a ref.
 - **`feedback` Edge Function** lives in the **`boojy-cloud`** repo (like the others — see
   `.claude/rules/supabase.md`): verify Turnstile token → insert into a `feedback` table (+ migration).
-  **Status: not built yet** as of 2026-06-01 — the UI ships ahead of the backend.
+  **Status: built 2026-06-20** (boojy-cloud branch `feedback-function`) — awaiting deploy + real
+  Turnstile keys before `FEEDBACK_BACKEND_LIVE` flips to `true` here.
 - **Reuse target:** the planned **Cloud paid-tier email waitlist** should reuse this exact pattern
   (Turnstile-verified Edge Function insert), not invent a second anti-spam path.
