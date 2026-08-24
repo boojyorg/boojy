@@ -32,11 +32,11 @@ const meta = (
 export const PAGE_META: Record<string, PageMeta> = {
   '/': meta(
     'Boojy – Creative Tools',
-    'Boojy - Free, open-source creative tools: a simple music studio, a calm notes app, a browser image editor, and free cloud sync for Notes.',
+    'Boojy - Free, open-source creative tools: a calm notes app, a simple music studio, and a browser image editor.',
     '/',
     DEFAULT_OG_IMAGE,
     'Boojy - Free Creative Tools',
-    'Free, open-source creative software. Music production, notes, design, and free cloud sync.',
+    'Free, open-source creative software. Notes, music production, and design.',
   ),
   '/audio/': meta(
     'Boojy Audio – Free DAW for Beginners',
@@ -54,14 +54,6 @@ export const PAGE_META: Record<string, PageMeta> = {
     'Boojy Notes - A Calm Space for Your Thoughts',
     'Write in markdown, organize with folders. Free and runs in your browser.',
   ),
-  '/cloud/': meta(
-    'Boojy Cloud – Sync Your Creative Work',
-    'Boojy Cloud - Free sync for Boojy Notes across your devices. 500 MB free, no card needed. Audio sync coming soon.',
-    '/cloud/',
-    `${SITE}/images/cloud-preview.jpg`,
-    'Boojy Cloud - Sync Your Creative Work',
-    'Free sync for Boojy Notes across your devices. 500 MB free, no card needed.',
-  ),
   '/design/': meta(
     'Boojy Design – Image Editor in Your Browser',
     'Boojy Design - A free image editor that runs in your browser. Paint, shapes, layers, live text, and export. No install, no account.',
@@ -72,23 +64,12 @@ export const PAGE_META: Record<string, PageMeta> = {
   ),
   '/news/': meta(
     'News – Boojy',
-    'Notes from Tyr on what is new and improved across Boojy — Audio, Notes, Design, and Cloud.',
+    'Notes from Tyr on what is new and improved across Boojy — Notes, Audio, and Design.',
     '/news/',
     DEFAULT_OG_IMAGE,
     'Boojy News',
     'Notes from Tyr on what is new and improved across Boojy.',
   ),
-  '/account/': {
-    ...meta(
-      'Boojy – Account',
-      'Boojy Account - Sign in to sync your notes across your devices with Boojy Cloud.',
-      '/account/',
-      DEFAULT_OG_IMAGE,
-      'Boojy Account',
-      'Sign in to sync your notes across your devices with Boojy Cloud.',
-    ),
-    noindex: true,
-  },
   '/privacy/': meta(
     'Privacy Policy – Boojy',
     'Boojy Privacy Policy - How we handle your data',

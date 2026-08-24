@@ -45,7 +45,7 @@
   left: 7px;
 }
 
-/* Amber nebula glow — Audio is blue, Notes grey, Cloud white, Design amber
+/* Amber nebula glow — Audio is blue, Notes grey, Design amber
    (matches the Design wordmark badge #E89940). */
 .design-hero-glow {
   --glow-opacity: 0.9;
@@ -90,7 +90,7 @@
   z-index: 2;
 }
 
-/* Translucent glass button (matches the Notes / Cloud web CTAs).
+/* Translucent glass button (matches the Notes web CTA).
    Border at 0.3 (not Audio's 0.15): the warm-brown hero glow lowers white-on-bg
    contrast, so a brighter edge is needed here to read the same as Audio's. */
 .btn-design {

@@ -12,7 +12,6 @@ const PAGES = [
   { path: '/audio/', title: 'Boojy Audio – Free DAW for Beginners' },
   { path: '/notes/', title: 'Boojy Notes – A Calm Space for Your Thoughts' },
   { path: '/design/', title: 'Boojy Design – Image Editor in Your Browser' },
-  { path: '/cloud/', title: 'Boojy Cloud – Sync Your Creative Work' },
   { path: '/news/', title: 'News – Boojy' },
   { path: '/privacy/', title: 'Privacy Policy – Boojy' },
   { path: '/terms/', title: 'Terms of Service – Boojy' },
@@ -27,10 +26,10 @@ for (const { path, title } of PAGES) {
   });
 }
 
-test('homepage shows the orbit logo twice and all four product cards', async ({ page }) => {
+test('homepage shows the orbit logo twice and all three product cards', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('svg.boojy-mark')).toHaveCount(2); // nav + hero
-  await expect(page.locator('.product-card')).toHaveCount(4); // Audio · Notes · Design · Cloud
+  await expect(page.locator('.product-card')).toHaveCount(3); // Notes · Audio · Design
 });
 
 test('homepage runs without JavaScript errors', async ({ page }) => {
