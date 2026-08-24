@@ -4,7 +4,7 @@ export const GITHUB_ICON_PATH =
 export const YOUTUBE_ICON_PATH =
   'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z';
 
-export type ProductId = 'audio' | 'notes' | 'cloud' | 'design';
+export type ProductId = 'notes' | 'audio' | 'design';
 
 /**
  * Suite-wide release-stage ladder. Each app sits on one rung; the label is the
@@ -19,9 +19,10 @@ export const STAGE_LABELS: Record<Stage, string> = {
 };
 
 /**
- * Homepage product grid — one unified 2×2 of all four products, all live. Order
- * is the canonical product order (apps by maturity, then the Cloud service):
- * Audio, Notes / Design, Cloud — keep the nav and footer in the same order.
+ * Homepage product grid — one row of the three apps. Order is the canonical
+ * product order (the suite's release order): Notes, Audio, Design — keep the
+ * nav and footer in the same order. (Boojy Cloud was dropped from the lineup
+ * 2026-08; see the suite VISION.md.)
  * The `name` is the logo-image fallback for any product without a text logo.
  */
 export interface ProductCardData {
@@ -35,26 +36,13 @@ export interface ProductCardData {
   /** Product name — logo-image fallback + a11y label. */
   name: string;
   description: string;
-  /** Ladder badge (Audio/Notes/Cloud). Omit + set `comingSoon` for off-ladder items. */
+  /** Ladder badge. Omit + set `comingSoon` for off-ladder items. */
   stage?: Stage;
   /** Off-ladder, not yet shipped (Design): muted card, "Coming soon" badge, no CTA. */
   comingSoon?: boolean;
 }
 
 export const PRODUCT_CARDS: ProductCardData[] = [
-  {
-    id: 'audio',
-    href: '/audio/',
-    visual: {
-      kind: 'image',
-      src: '/images/audio-screenshot-v0.5.2.png',
-      alt: 'Boojy Audio interface',
-    },
-    logo: { src: '/images/audio-text-logo.png', alt: 'Boojy Audio' },
-    name: 'Boojy Audio',
-    description: 'A free, simple music studio. For macOS and Windows.',
-    stage: 'early-access',
-  },
   {
     id: 'notes',
     href: '/notes/',
@@ -69,6 +57,19 @@ export const PRODUCT_CARDS: ProductCardData[] = [
     stage: 'early-access',
   },
   {
+    id: 'audio',
+    href: '/audio/',
+    visual: {
+      kind: 'image',
+      src: '/images/audio-screenshot-v0.5.2.png',
+      alt: 'Boojy Audio interface',
+    },
+    logo: { src: '/images/audio-text-logo.png', alt: 'Boojy Audio' },
+    name: 'Boojy Audio',
+    description: 'A free, simple music studio. For macOS and Windows.',
+    stage: 'early-access',
+  },
+  {
     id: 'design',
     href: '/design/',
     visual: {
@@ -79,16 +80,6 @@ export const PRODUCT_CARDS: ProductCardData[] = [
     logo: { src: '/images/design-text-logo.png', alt: 'Boojy Design' },
     name: 'Boojy Design',
     description: 'An image editor in the browser. Draw, edit, and design.',
-    stage: 'early-access',
-  },
-  {
-    id: 'cloud',
-    href: '/cloud/',
-    visual: { kind: 'image', src: '/images/cloud-preview.jpg', alt: 'Boojy Cloud' },
-    logo: { src: '/images/cloud-text-logo.png', alt: 'Boojy Cloud' },
-    name: 'Boojy Cloud',
-    description:
-      'Optional cloud storage that syncs Boojy Notes across your devices. Coming to more Boojy apps soon.',
     stage: 'early-access',
   },
 ];

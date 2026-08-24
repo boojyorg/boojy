@@ -25,6 +25,5 @@ paths:
 - **Clean legal URLs + 301s.** Astro can't emit a literal `/privacy.html` file, so the legal /
   subscribed pages ship as clean URLs (`/privacy/`, `/terms/`, `/subscribed/`) with **301s from the
   old `.html` URLs in `public/_redirects`** — don't drop them; they preserve indexed URLs.
-- **Sitemap filter.** `/account/` (login-gated `client:only`) and `/subscribed/` are excluded from
-  the sitemap in `astro.config.mjs` — they render nothing server-side, so submitting them invites a
-  soft-404 / "crawled, not indexed".
+- **Sitemap filter.** `/subscribed/` (post-signup confirmation, no SEO value) is excluded from the
+  sitemap in `astro.config.mjs`.

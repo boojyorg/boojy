@@ -24,7 +24,7 @@ const latestNews = (await getCollection('news')).sort(
       name: 'Boojy',
       url: 'https://boojy.org',
       logo: 'https://boojy.org/images/Boojy_Image_Logo.png',
-      description: 'Free, open-source creative software: music production, notes, design, and cloud sync.',
+      description: 'Free, open-source creative apps: notes, music production, and design.',
       sameAs: ['https://github.com/boojyorg', 'https://youtube.com/@boojy'],
     })}
   />
@@ -43,7 +43,7 @@ const latestNews = (await getCollection('news')).sort(
     </div>
   </section>
 
-  <!-- Product grid — Audio · Notes · Design · Cloud (2×2). -->
+  <!-- Product grid — Notes · Audio · Design (one row of three). -->
   <ProductCards />
 
   <!-- Why Boojy — personal story + the promises. The "about". A centered card. -->
@@ -84,7 +84,7 @@ const latestNews = (await getCollection('news')).sort(
     )
   }
 
-  <!-- Feedback — real form → Supabase Edge Function + Turnstile. -->
+  <!-- Feedback — mailto composer (opens the visitor's mail app prefilled). -->
   <section class="feedback" id="feedback">
     <div class="container">
       <div class="feedback-inner">

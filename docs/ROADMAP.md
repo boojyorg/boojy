@@ -19,11 +19,9 @@ ASCII-mockup sign-off before code.
 - **P2 — Release automation.** CF Pages Deploy Hook POSTed from each app's release workflow so a new
   tag rebuilds boojy.org automatically (baked versions currently only refresh on the next deploy).
 - **P3 — Narrative.** Roadmap/updates storytelling beyond `/news/` as the suite matures.
-- **P4 — Feedback backend.** Build the `feedback` Edge Function (Turnstile verify → `feedback`
-  table + an email notification so "straight to my inbox" stays true) in boojy-cloud, then flip
-  `FEEDBACK_BACKEND_LIVE` in `Feedback.tsx` and swap in the real Turnstile keys — all in one
-  release. (The Cloud paid-tier waitlist that used to ride along here was dropped with Orbit —
-  see Locked decisions.)
+- **P4 — Feedback backend ✅ (shipped 2026-06-20, removed 2026-08).** The `feedback` Edge Function
+  (Turnstile verify → `feedback` table) went live, then was removed with the Boojy Cloud drop —
+  the form is now a mailto composer (see `.claude/rules/feedback.md`).
 - **P5 — Brand / product registry.** A single config-driven product model (extends the
   `STAGE_LABELS` + per-product `stage` work) feeding cards, badges, and meta.
 - **P6 — Testing floor.** Baseline ✅ (shipped 2026-06-11, PR #26): vitest unit tests for
@@ -32,12 +30,11 @@ ASCII-mockup sign-off before code.
 
 ## Locked decisions (reference)
 
-- **Cloud is free-only (locked 2026-06-11):** the paid "Orbit" tier is dropped, not deferred — no
-  pricing, no waitlist, no subscription machinery. The dormant Stripe wiring (create-checkout,
-  stripe-webhook, `useAccount`'s Orbit tier mapping, the gated billing UI in `Account.tsx`) stays
-  parked behind `CLOUD_LAUNCHED = false` and gets removed (not launched) when next touched.
-- **Site map (locked 2026-06-01, nav order updated #18):** nav pillars Audio · Notes · Design ·
-  Cloud; utility links News · GitHub · Account. Cloud is a live free pillar. `/news/`
-  replaces the old `/updates` changelog idea (prose monthly notes, not a blog/RSS). **Dropped:**
-  `/roadmap` page, Cloud FAQ (component kept, unmounted), `/about`. Full detail in auto-memory
-  `boojy-website-roadmap`.
+- **Boojy Cloud is dropped (2026-08, supersedes "free-only" 2026-06-11):** Cloud left the suite
+  lineup entirely (see suite `VISION.md` 2026-08 refresh). `/cloud/` and `/account/` are gone
+  (301 → `/`), the Supabase/Stripe wiring is removed (the "remove, don't launch" plan of record,
+  executed), and the site has no backend.
+- **Site map (updated 2026-08; originally locked 2026-06-01):** nav pillars Notes · Audio · Design
+  (the suite release order); utility links News · GitHub. `/news/` replaces the old `/updates`
+  changelog idea (prose monthly notes, not a blog/RSS). **Dropped:** `/roadmap` page, `/about`,
+  and with the Cloud drop `/cloud/`, `/account/`, and the Cloud FAQ.

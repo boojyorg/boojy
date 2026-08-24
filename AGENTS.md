@@ -18,9 +18,9 @@ copy were untouched; a Tailwind/shadcn restyle is a separate future task. Histor
 
 Two architectural anchors for any change:
 
-* **Static-first, no SSR.** The whole site is SSG + client islands. Account auth and Cloud checkout
-  run client-side; the Notes version is fetched at build time. **Do not add an SSR adapter** (and
-  **never Vercel**) unless a real server-rendering requirement appears.
+* **Static-first, no SSR.** The whole site is SSG + client islands; the Notes version is fetched at
+  build time. **Do not add an SSR adapter** (and **never Vercel**) unless a real server-rendering
+  requirement appears.
 * **The app lives in `website/`.** The repo root is a thin delegator; all source, config, and the
   dev server are in `website/`. Run gates from there.
 
@@ -79,29 +79,29 @@ General branch discipline → suite root `AGENTS.md`. Web specifics:
 
 ## Architecture
 
-* **`website/src/pages/`** — file-based routes: `index`, `audio/`, `notes/`, `design/`, `cloud/`, `news/`
-  (`index` archive + `[...slug]` post pages from the `news` collection), `account/`, `privacy/`,
-  `terms/`, `subscribed/`, `404`. Legal/subscribed pages use **clean URLs** + 301s from the old
-  `.html` (see `.claude/rules/caching-and-deploy.md`).
+* **`website/src/pages/`** — file-based routes: `index`, `notes/`, `audio/`, `design/`, `news/`
+  (`index` archive + `[...slug]` post pages from the `news` collection), `privacy/`, `terms/`,
+  `subscribed/`, `404`. Legal/subscribed pages use **clean URLs** + 301s from the old `.html`
+  (see `.claude/rules/caching-and-deploy.md`). (`/cloud/` and `/account/` were removed 2026-08 with
+  the Boojy Cloud drop — both 301 to `/` in `public/_redirects`.)
 * **`website/src/layouts/`** — `BaseLayout.astro` owns the full static `<head>` (title, description,
   canonical, OG, theme-color, favicons, analytics slot) from `content/page-meta.ts`. `LegalLayout.astro` for
   privacy/terms. (View-transition + glow rules: `.claude/rules/view-transitions-and-glow.md`.)
-* **Islands (React, logic unchanged):** `Starfield` (`client:idle`), `FaqAccordion`
-  (`client:visible`; **currently unmounted** — was only on `/cloud`, whose FAQ is deferred —
-  component kept for when it returns), `AudioDownload` / `NotesDownload` (`client:load`; OS detect runs in
-  `useEffect` so they SSR a universal default), `Account` (`client:only="react"` — behind login),
-  `Feedback` (`client:visible`; homepage form → `feedback` Edge Function + Turnstile —
-  see `.claude/rules/feedback.md`).
+* **Islands (React):** `Starfield` (`client:idle`), `AudioDownload` / `NotesDownload`
+  (`client:load`; OS detect runs in `useEffect` so they SSR a universal default), `Feedback`
+  (`client:visible`; homepage form is a **mailto composer** — the Supabase/Turnstile backend went
+  with the Cloud drop — see `.claude/rules/feedback.md`).
 * **Static `.astro` chrome:** `Nav.astro` (+ inline toggle/scroll script; active route from
   `Astro.url.pathname` at build time), `Footer.astro`, `ProductCards.astro`.
-* **`website/src/content/`** — `site.ts`, `cloud.ts`, `page-meta.ts`, `legal/*.html` (rendered via
+* **`website/src/content/`** — `site.ts`, `page-meta.ts`, `legal/*.html` (rendered via
   `set:html` with `?raw`). Copy + meta come from here; don't hardcode. **Content collection:** `news`
   (defined in `src/content.config.ts`, glob loader over `src/content/news/*.md`) — one markdown file
   per monthly post; a new post = a new `.md` file (title/date/summary frontmatter + prose body).
-* **`website/src/lib/`** — `platform.ts` (OS detect), `supabase.ts`, `github-release.ts` (build-time
+* **`website/src/lib/`** — `platform.ts` (OS detect), `github-release.ts` (build-time
   version + download-URL fetch for Audio & Notes).
-* **Backend facts (Supabase, Stripe) + the build-time Notes version → `.claude/rules/`** — read the
-  matching rule file when you touch account/cloud/notes code.
+* **The build-time Notes version → `.claude/rules/`** — read the matching rule file when you touch
+  notes code. (The site has **no backend**: the Supabase/Stripe integrations were removed 2026-08
+  with the Boojy Cloud drop.)
 
 ## Conventions
 
@@ -118,8 +118,8 @@ General memory model + context-hygiene → suite root `AGENTS.md`. Web specifics
 
 * **`dreams.md`** — §1 only: the active engineering target + open milestones. Roadmap sequence lives
   in `docs/ROADMAP.md`; unscheduled items in `docs/BACKLOG.md`.
-* **`.claude/rules/`** — one topic per file (per-area gotchas + durable backend facts: Supabase,
-  Stripe, caching/deploy, view-transitions/glow, feedback). Read the matching file when touching
+* **`.claude/rules/`** — one topic per file (per-area gotchas + durable facts: caching/deploy,
+  view-transitions/glow, feedback, release-fetch). Read the matching file when touching
   matching areas.
 
 ## Claude Code–specific

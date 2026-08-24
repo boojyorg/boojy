@@ -15,7 +15,5 @@ is `dreams.md`. Pull from here into a milestone when it's time.
 
 ## Deferred features
 
-- **Cloud paid-tier email waitlist** — needs its backend (Supabase table + Edge Function +
-  Turnstile, same pattern as Feedback); `/cloud` just states "paid coming" for now. (Tied to P4.)
-- **FaqAccordion** — component kept but unmounted (was only on `/cloud`, whose FAQ is deferred);
-  remount when a FAQ returns.
+- ~~Cloud paid-tier email waitlist~~ / ~~FaqAccordion remount~~ — dead with the 2026-08 Boojy
+  Cloud drop; both removed from the codebase (git history has them).
