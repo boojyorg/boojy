@@ -4,7 +4,7 @@ Local guidance for coding agents working on Boojy Web (boojy.org). **Suite-wide 
 live in the suite root's `AGENTS.md` (`~/Documents/Projects/boojy/AGENTS.md`)** (memory model,
 changelog/release, branch discipline, context-hygiene, working prefs); this file is the app-specific
 architecture, stack, and gotchas. Per-area gotchas live in **`.claude/rules/`** (plain markdown —
-readable by any agent); the active target lives in **`dreams.md`**.
+readable by any agent); the one planning file is **`docs/BACKLOG.md`**.
 
 ## What this is (read first)
 
@@ -114,8 +114,8 @@ General branch discipline → suite root `AGENTS.md`. Web specifics:
 
 General memory model + context-hygiene → suite root `AGENTS.md`. Web specifics:
 
-* **`dreams.md`** — §1 only: the active engineering target + open milestones. Roadmap sequence lives
-  in `docs/ROADMAP.md`; unscheduled items in `docs/BACKLOG.md`.
+* **`docs/BACKLOG.md`** — the one planning file: decisions, what's next, unscheduled items. There is
+  no `dreams.md` and no roadmap file; shipped work goes to `CHANGELOG.md`.
 * **`.claude/rules/`** — one topic per file (per-area gotchas + durable facts: caching/deploy,
   view-transitions/glow, release-fetch). Read the matching file when touching matching areas.
 

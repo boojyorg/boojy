@@ -38,7 +38,7 @@ components fall back to the releases page if an asset URL is unresolved, so no l
 
 Because versions are baked at build time, a new app release only appears after the website rebuilds.
 The planned fix is a **Cloudflare Pages Deploy Hook** POSTed from each app repo's release workflow, so
-publishing a release triggers a website rebuild automatically — no manual redeploy. See `dreams.md`.
+publishing a release triggers a website rebuild automatically — no manual redeploy. See `docs/BACKLOG.md`.
 
 ---
 

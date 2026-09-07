@@ -30,4 +30,4 @@ paths:
   `tyrbujac/boojy-audio` only survives as a 301 — never reintroduce it.
 - No GitHub token needed: the unauthenticated API is 60 req/hr per IP on shared CF build IPs, and the
   fallback string covers the occasional rate-limit. (Future: a CF Deploy Hook from each app's release
-  workflow auto-rebuilds the site so a new tag goes live without a manual deploy — see `dreams.md`.)
+  workflow auto-rebuilds the site so a new tag goes live without a manual deploy — see `docs/BACKLOG.md`.)
