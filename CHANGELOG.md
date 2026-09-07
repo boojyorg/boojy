@@ -5,6 +5,10 @@ convention is in the suite root's `AGENTS.md`.
 
 ## Unreleased
 
+### Bug Fixes
+- **Privacy page no longer mentions unsubscribing from emails.** The line came from the retired
+  Mailchimp newsletter; the site sends no emails. "Last updated" bumped to 2026-09-07.
+
 ### Improvements
 - **Planning files pruned.** `dreams.md` (a June to-do list) and `docs/ROADMAP.md` are gone; their
   unfinished items and locked decisions live in `docs/BACKLOG.md`, now the one planning file. The

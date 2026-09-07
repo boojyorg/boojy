@@ -46,8 +46,9 @@ Needs one to three reference sites and the UI intake before any plan. Items rais
   Cloudflare Web Analytics beacon (free CWV data).
 - **Drop React from the homepage.** The feedback form island is gone, so `Starfield` is the last
   React island on `/`; making it `is:inline` vanilla JS removes React from the homepage entirely.
-- **Privacy and terms freshness check.** Carried from June and still real: the privacy page has an
-  "Unsubscribe" line from the newsletter era.
+- **Privacy and terms freshness check.** Carried from June. The one known inaccuracy (a newsletter
+  "Unsubscribe" line) was fixed 2026-09-07; a full read-through against what the apps actually do
+  is still owed.
 - **CSS consolidation** 4 → 1 product stylesheets (June site review, rec #9).
 - **Google Search Console (reassess).** A domain property was being verified in June; check whether
   it completed and whether `https://boojy.org/sitemap-index.xml` was submitted. The June list of
