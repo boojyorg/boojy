@@ -12,7 +12,6 @@ const activeProduct = path.startsWith('/notes/')
     : path.startsWith('/design/')
       ? 'design'
       : undefined;
-const newsActive = path.startsWith('/news/');
 ---
 
 <nav class="navbar" id="navbar">
@@ -40,7 +39,6 @@ const newsActive = path.startsWith('/news/');
     </div>
 
     <div class="nav-right">
-      <a href="/news/" class:list={['nav-news', { active: newsActive }]}>News</a>
       <a
         href="https://github.com/boojyorg"
         target="_blank"
@@ -75,7 +73,6 @@ const newsActive = path.startsWith('/news/');
         class:list={['nav-mobile-link', { active: activeProduct === 'design' }]}
         data-product="design">Design</a
       >
-      <a href="/news/" class:list={['nav-mobile-link', { active: newsActive }]}>News</a>
       <a href="https://github.com/boojyorg" target="_blank" class="nav-mobile-link" rel="noreferrer">GitHub</a>
     </div>
   </div>

@@ -298,7 +298,7 @@ body {
 .why-boojy-title {
   margin-bottom: var(--spacing-md);
   /* Mono near-white, deliberately NOT the accent — keeps this eyebrow calm/white
-     while the rest of the accent (news eyebrow, links, CTAs) is blue. */
+     while the rest of the accent (links, CTAs) is blue. */
   color: #d4d9e6;
 }
 
@@ -372,8 +372,9 @@ body {
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* Neutral badge (the stage badge is accent-tinted; this one stays grey). */
-.coming-soon-badge {
+/* Neutral badge (the stage badge is accent-tinted; the off-ladder ones stay grey). */
+.coming-soon-badge,
+.preview-badge {
   color: var(--color-text-light);
 }
 
@@ -409,55 +410,7 @@ body {
   transform: none;
 }
 
-/* === Latest news teaser === (links to the newest /news post) */
-.hub-news {
-  padding: 0 0 var(--spacing-2xl);
-}
-
-.hub-news-card {
-  display: block;
-  max-width: 680px;
-  margin: 0 auto;
-  padding: var(--spacing-lg) var(--spacing-xl);
-  background: var(--card-narrative-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  text-decoration: none;
-  color: inherit;
-  transition:
-    border-color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.hub-news-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-3px);
-}
-
-.hub-news-eyebrow {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: var(--spacing-xs);
-}
-
-.hub-news-summary {
-  margin: 0 0 var(--spacing-sm);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--color-text);
-}
-
-.hub-news-cta {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--color-text-light);
-}
-
-/* === Feedback === (real form → Supabase Edge Function + Turnstile) */
+/* === Feedback === (a plain line with a mailto link; the #feedback anchor is load-bearing) */
 .feedback {
   padding: var(--spacing-3xl) 0;
 }
@@ -481,116 +434,19 @@ body {
   color: var(--color-text);
 }
 
-.feedback-sub {
-  margin-bottom: var(--spacing-lg);
+.feedback-line {
+  margin: 0;
   font-size: 1rem;
   color: var(--color-text-light);
 }
 
-.feedback-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  text-align: left;
+.feedback-line a {
+  color: var(--color-accent);
+  text-decoration: none;
 }
 
-.feedback-row {
-  display: flex;
-  gap: var(--spacing-sm);
-}
-
-.feedback-input,
-.feedback-select,
-.feedback-textarea {
-  width: 100%;
-  padding: 0.7rem 0.9rem;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  color: var(--color-text);
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.feedback-select {
-  flex-shrink: 0;
-  width: auto;
-  min-width: 8.5rem;
-  cursor: pointer;
-}
-
-.feedback-input:focus,
-.feedback-select:focus,
-.feedback-textarea:focus {
-  outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
-}
-
-.feedback-input::placeholder,
-.feedback-textarea::placeholder {
-  color: var(--color-text-light);
-  opacity: 0.6;
-}
-
-.feedback-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.feedback-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-/* Reserve the widget's height so the layout doesn't jump when it loads. */
-.feedback-turnstile {
-  min-height: 65px;
-}
-
-.feedback-submit {
-  padding: 0.6rem 1.6rem;
-  background: var(--color-accent);
-  color: #0f1119;
-  font-weight: 700;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition:
-    filter 0.2s ease,
-    transform 0.2s ease;
-}
-
-.feedback-submit:hover:not(:disabled) {
-  filter: brightness(1.1);
-  transform: translateY(-1px);
-}
-
-.feedback-submit:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.feedback-error {
-  font-size: 0.85rem;
-  color: #ff8a80;
-}
-
-.feedback-success {
-  padding: var(--spacing-lg);
-  text-align: center;
-  color: var(--color-text);
-}
-
-.feedback-success-icon {
-  margin-bottom: var(--spacing-sm);
-  font-size: 2.5rem;
+.feedback-line a:hover {
+  text-decoration: underline;
 }
 
 /* === Responsive === */
@@ -634,18 +490,5 @@ body {
   .hub-hero-glow {
     --glow-width: 300px;
     --glow-height: 200px;
-  }
-
-  /* Feedback: email + type stack, button goes full width. */
-  .feedback-row {
-    flex-direction: column;
-  }
-
-  .feedback-select {
-    width: 100%;
-  }
-
-  .feedback-submit {
-    width: 100%;
   }
 }

@@ -7,12 +7,5 @@ export default defineConfig({
   output: 'static', // fully static — no SSR adapter, no Vercel
   trailingSlash: 'always', // every route is a directory route: /audio/, /privacy/, etc.
   build: { format: 'directory' },
-  integrations: [
-    react(),
-    // Keep no-SEO-value pages out of the sitemap:
-    //  - /subscribed/ : post-signup confirmation page
-    sitemap({
-      filter: (page) => !page.includes('/subscribed/'),
-    }),
-  ],
+  integrations: [react(), sitemap()],
 });

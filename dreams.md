@@ -24,8 +24,9 @@ P6 tail (CWV measurement).
 
 ### Review leftovers (from the 2026-06-11 top-10, not yet picked up)
 
-- News `june-2026.md` rewrite in Tyr's voice (rec #8) · CSS consolidation 4→1 product stylesheets
-  (rec #9) · wordmark dark-on-dark legibility (brand-asset question, above all repo changes).
+- ~~News `june-2026.md` rewrite (rec #8)~~ — News removed 2026-09 instead · CSS consolidation 4→1
+  product stylesheets (rec #9) · wordmark dark-on-dark legibility (brand-asset question, above all
+  repo changes).
 - Supabase pausing (rec #1) was handled in **boojy-cloud**: twice-weekly keep-alive ping CI
   (its PR #2, 2026-06-11).
 
@@ -49,6 +50,6 @@ P6 tail (CWV measurement).
 - [ ] **(P1/P6) Core Web Vitals not measured.** Add `chrome-devtools-mcp` and run a Lighthouse pass
   for real LCP / CLS / INP (folds into the testing floor). The dead umami tag was removed (PR #21);
   Cloudflare Web Analytics beacon (free CWV data) still to add.
-- [ ] **(P1) Drop ~57KB React from the homepage.** ⚠️ Superseded by the feedback form: `Feedback.tsx`
-  is a React island, so `/` needs React regardless. Making Starfield `is:inline` no longer removes
-  React from the homepage unless the feedback form is also rebuilt in vanilla JS.
+- [ ] **(P1) Drop ~57KB React from the homepage.** The feedback form island was removed 2026-09,
+  so `Starfield` is now the only React island on `/` — making it `is:inline` vanilla JS would drop
+  React from the homepage entirely.

@@ -32,7 +32,7 @@
 
   /* Card surfaces, grouped so product vs. narrative cards recolour independently
      (chosen 2026-06-01): product cards stay neutral grey (they pop forward);
-     narrative cards (Why / news) go near-black to recede into the cosmic backdrop.
+     narrative cards (Why) go near-black to recede into the cosmic backdrop.
      The feedback card opts back out to grey (see hub.css). */
   --card-product-bg: var(--color-bg-card);
   --card-narrative-bg: var(--color-bg-card-dark);
@@ -193,20 +193,6 @@ body {
 }
 
 .nav-github:hover {
-  color: var(--color-text);
-}
-
-/* News — a quiet utility text link by the GitHub icon (not a product pillar, not a button). */
-.nav-news {
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  color: var(--color-text-light);
-  transition: color 0.3s ease;
-}
-
-.nav-news:hover,
-.nav-news.active {
   color: var(--color-text);
 }
 
@@ -469,8 +455,8 @@ body {
   color: #9b9eb0;
 }
 
-/* Early-access expectation-setter under each product CTA — a subtle plain line, not a
-   banner. The link routes to the homepage feedback form. */
+/* Expectation-setter under each product CTA — a subtle plain line, not a banner.
+   The link routes to the homepage #feedback line. */
 .early-access-note {
   max-width: 34rem;
   margin: 0.85rem auto 0;
@@ -900,14 +886,13 @@ section {
 /* === Responsive === */
 
 /* Nav collapses to the hamburger at ≤768px (was ≤480) — closes the 481–767px dead
-   zone where the centered product links could overlap the Account button. */
+   zone where the centered product links could overlap the right-hand nav items. */
 @media (max-width: 768px) {
   .nav-toggle {
     display: flex;
   }
 
   .nav-products,
-  .nav-news,
   .nav-github,
   .nav-mobile-menu {
     display: none;

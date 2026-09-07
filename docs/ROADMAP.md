@@ -34,7 +34,9 @@ ASCII-mockup sign-off before code.
   lineup entirely (see suite `VISION.md` 2026-08 refresh). `/cloud/` and `/account/` are gone
   (301 → `/`), the Supabase/Stripe wiring is removed (the "remove, don't launch" plan of record,
   executed), and the site has no backend.
-- **Site map (updated 2026-08; originally locked 2026-06-01):** nav pillars Notes · Audio · Design
-  (the suite release order); utility links News · GitHub. `/news/` replaces the old `/updates`
-  changelog idea (prose monthly notes, not a blog/RSS). **Dropped:** `/roadmap` page, `/about`,
-  and with the Cloud drop `/cloud/`, `/account/`, and the Cloud FAQ.
+- **Site map (updated 2026-09; originally locked 2026-06-01):** nav pillars Notes · Audio · Design
+  (the suite release order); one utility link, GitHub. **Dropped:** `/roadmap` page, `/about`,
+  with the Cloud drop `/cloud/`, `/account/`, and the Cloud FAQ; and in 2026-09 `/news/` (the
+  monthly-notes idea — its one post had gone stale and wrong) and the homepage feedback form
+  (now a plain mailto line under the kept `#feedback` anchor). Design is labelled **Preview**
+  (working, paused) via the off-ladder `preview` flag in `site.ts`.

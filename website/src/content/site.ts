@@ -38,8 +38,13 @@ export interface ProductCardData {
   description: string;
   /** Ladder badge. Omit + set `comingSoon` for off-ladder items. */
   stage?: Stage;
-  /** Off-ladder, not yet shipped (Design): muted card, "Coming soon" badge, no CTA. */
+  /** Off-ladder, not yet shipped: muted card, "Coming soon" badge, no CTA. */
   comingSoon?: boolean;
+  /**
+   * Off-ladder, works but paused (Design): neutral "Preview" badge, card and CTA stay
+   * live because the app is usable. Set instead of `stage`.
+   */
+  preview?: boolean;
 }
 
 export const PRODUCT_CARDS: ProductCardData[] = [
@@ -80,7 +85,7 @@ export const PRODUCT_CARDS: ProductCardData[] = [
     logo: { src: '/images/design-text-logo.png', alt: 'Boojy Design' },
     name: 'Boojy Design',
     description: 'An image editor in the browser. Draw, edit, and design.',
-    stage: 'early-access',
+    preview: true,
   },
 ];
 
@@ -99,6 +104,6 @@ export interface WhyPoint {
 
 export const WHY_POINTS: WhyPoint[] = [
   { label: 'Always free', detail: 'Every app and feature, free to download and use.' },
-  { label: "Open source, once it's ready", detail: "Each app's code opens up as it matures." },
+  { label: 'Open source', detail: "Every app's code is public on GitHub, under GPLv3." },
   { label: 'Yours to keep', detail: 'Local-first and offline. Your files stay yours.' },
 ];

@@ -5,14 +5,19 @@
 # Legacy URLs → current routes (legal pages moved to clean URLs)
 /privacy.html    /privacy/      301
 /terms.html      /terms/        301
-/subscribed.html /subscribed/   301
 
-# Retired pages (Boojy Cloud dropped from the lineup 2026-08; accounts went with it)
-/pricing     /    301
-/cloud       /    301
-/cloud/      /    301
-/account     /    301
-/account/    /    301
+# Retired pages. Boojy Cloud left the lineup 2026-08 (accounts went with it); the News
+# page and the old Mailchimp "subscribed" confirmation were removed 2026-09.
+/pricing          /    301
+/cloud            /    301
+/cloud/           /    301
+/account          /    301
+/account/         /    301
+/news             /    301
+/news/*           /    301
+/subscribed.html  /    301
+/subscribed       /    301
+/subscribed/      /    301
 
 # Non-trailing-slash → trailing slash (site uses trailingSlash: 'always')
 /audio    /audio/      301

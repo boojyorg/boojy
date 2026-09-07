@@ -12,7 +12,6 @@ const PAGES = [
   { path: '/audio/', title: 'Boojy Audio – Free DAW for Beginners' },
   { path: '/notes/', title: 'Boojy Notes – A Calm Space for Your Thoughts' },
   { path: '/design/', title: 'Boojy Design – Image Editor in Your Browser' },
-  { path: '/news/', title: 'News – Boojy' },
   { path: '/privacy/', title: 'Privacy Policy – Boojy' },
   { path: '/terms/', title: 'Terms of Service – Boojy' },
 ];
@@ -62,12 +61,22 @@ test('/notes/ primary CTA opens the web app', async ({ page }) => {
   await expect(cta).toHaveAttribute('href', 'https://notes.boojy.org');
 });
 
-test('feedback form hydrates on scroll', async ({ page }) => {
+test('the #feedback anchor still exists and carries the mailto link', async ({ page }) => {
   await page.goto('/');
-  // client:visible island — it only mounts once scrolled into view.
-  await page.locator('#feedback').scrollIntoViewIfNeeded();
-  await expect(page.locator('.feedback-form')).toBeVisible();
-  await expect(page.locator('.feedback-submit')).toBeEnabled();
+  // Old links (app pages, every repo's CONTRIBUTING) point at /#feedback — keep it landing.
+  const section = page.locator('#feedback');
+  await expect(section).toBeVisible();
+  await expect(section.getByRole('link', { name: 'tyr@boojy.org' })).toHaveAttribute(
+    'href',
+    'mailto:tyr@boojy.org',
+  );
+});
+
+test('/design/ is labelled as a preview', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.product-card[data-product="design"] .product-card-badge')).toHaveText(
+    'Preview',
+  );
 });
 
 test('unknown URLs return the 404 page', async ({ page }) => {
