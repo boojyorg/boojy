@@ -1,16 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
-import { Feedback } from '../components/Feedback';
 import BoojyMark from '../components/BoojyMark.astro';
 import ProductCards from '../components/ProductCards.astro';
 import { WHY_POINTS, WHY_STORY } from '../content/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/hub.css';
-
-// Newest news post → the homepage "Latest" teaser (null if none written yet).
-const latestNews = (await getCollection('news')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-)[0];
 ---
 
 <BaseLayout path="/">
@@ -69,28 +62,15 @@ const latestNews = (await getCollection('news')).sort(
     </div>
   </section>
 
-  <!-- Latest — newest /news post, the "this is alive" closer before the feedback ask. -->
-  {
-    latestNews && (
-      <section class="hub-news">
-        <div class="container">
-          <a href={`/news/${latestNews.id}/`} class="hub-news-card">
-            <span class="hub-news-eyebrow">Latest · {latestNews.data.title}</span>
-            <p class="hub-news-summary">{latestNews.data.summary}</p>
-            <span class="hub-news-cta">All news →</span>
-          </a>
-        </div>
-      </section>
-    )
-  }
-
-  <!-- Feedback — mailto composer (opens the visitor's mail app prefilled). -->
+  <!-- Feedback — a plain line. The #feedback anchor stays: app pages and every repo's
+       CONTRIBUTING link to it. -->
   <section class="feedback" id="feedback">
     <div class="container">
       <div class="feedback-inner">
         <h2 class="feedback-title">Feedback</h2>
-        <p class="feedback-sub">Found a bug? Got an idea? This goes straight to my inbox.</p>
-        <Feedback client:visible />
+        <p class="feedback-line">
+          You can email me at <a href="mailto:tyr@boojy.org">tyr@boojy.org</a>
+        </p>
       </div>
     </div>
   </section>

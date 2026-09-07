@@ -8,7 +8,7 @@ export interface PageMeta {
   ogDescription: string;
   path: string;
   ogImage?: string;
-  /** Emit `<meta name="robots" content="noindex">` — for thin/behind-login pages. */
+  /** Emit `<meta name="robots" content="noindex">` — for thin pages (currently unused). */
   noindex?: boolean;
 }
 
@@ -62,14 +62,6 @@ export const PAGE_META: Record<string, PageMeta> = {
     'Boojy Design - Image Editor in Your Browser',
     'Paint, shapes, layers, live text, and export — free, right in your browser.',
   ),
-  '/news/': meta(
-    'News – Boojy',
-    'Notes from Tyr on what is new and improved across Boojy — Notes, Audio, and Design.',
-    '/news/',
-    DEFAULT_OG_IMAGE,
-    'Boojy News',
-    'Notes from Tyr on what is new and improved across Boojy.',
-  ),
   '/privacy/': meta(
     'Privacy Policy – Boojy',
     'Boojy Privacy Policy - How we handle your data',
@@ -86,17 +78,6 @@ export const PAGE_META: Record<string, PageMeta> = {
     'Terms of Service – Boojy',
     'Simple terms in plain English. Your content is yours. 100%.',
   ),
-  '/subscribed/': {
-    ...meta(
-      'Subscribed – Boojy',
-      "You're subscribed to Boojy updates",
-      '/subscribed/',
-      DEFAULT_OG_IMAGE,
-      'Subscribed – Boojy',
-      "You're subscribed to Boojy updates.",
-    ),
-    noindex: true,
-  },
   '/404.html': meta(
     '404 - Page Not Found | Boojy',
     'Page not found - Boojy',

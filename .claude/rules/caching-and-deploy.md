@@ -22,8 +22,11 @@ paths:
   also match the hashed files, and Cloudflare *combines* matching `_headers` rules, producing a
   doubled, conflicting `Cache-Control`. `/*.html` stays `max-age=0, must-revalidate`. (CF's
   dashboard "Browser Cache TTL" must be set to "Respect Existing Headers" or it overrides these.)
-- **Clean legal URLs + 301s.** Astro can't emit a literal `/privacy.html` file, so the legal /
-  subscribed pages ship as clean URLs (`/privacy/`, `/terms/`, `/subscribed/`) with **301s from the
-  old `.html` URLs in `public/_redirects`** — don't drop them; they preserve indexed URLs.
-- **Sitemap filter.** `/subscribed/` (post-signup confirmation, no SEO value) is excluded from the
-  sitemap in `astro.config.mjs`.
+- **Clean legal URLs + 301s.** Astro can't emit a literal `/privacy.html` file, so the legal
+  pages ship as clean URLs (`/privacy/`, `/terms/`) with **301s from the old `.html` URLs in
+  `public/_redirects`** — don't drop them; they preserve indexed URLs. Retired routes (`/cloud/`,
+  `/account/`, `/news/*`, `/subscribed/`) 301 to `/` in the same file.
+- **Verifying `_redirects` locally:** `astro preview` ignores the file. After a build, from
+  `website/`: `wrangler pages dev dist --port 8788 --compatibility-date 2026-05-28` — it applies
+  Cloudflare's redirect rules. (Without the flag wrangler defaults to today's date, and the bundled
+  local runtime rejects any date newer than it supports; use the newest date the error names.)

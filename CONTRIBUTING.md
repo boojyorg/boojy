@@ -8,7 +8,7 @@ Until then, two things are very welcome:
 
 - **Bug reports** — [open an issue](https://github.com/boojyorg/boojy-web/issues) with what
   happened and how to reproduce it.
-- **Feedback & ideas** — use the official feedback form at
-  [boojy.org](https://boojy.org/#feedback); it goes straight to the developer's inbox.
+- **Feedback & ideas** — email [tyr@boojy.org](mailto:tyr@boojy.org)
+  (also linked from [boojy.org/#feedback](https://boojy.org/#feedback)).
 
 Thanks for your interest in Boojy!
