@@ -47,9 +47,9 @@ deploy. Build settings: root `website`, command `pnpm build`, output `dist`.
 
 ## Contributing
 
-The Boojy suite is in **Early Access** and isn't accepting pull requests yet — contributions
-will open as the apps reach their v1.0 releases. **Bug reports and feedback are very welcome** —
-see [CONTRIBUTING.md](CONTRIBUTING.md).
+Boojy is a personal project and isn't accepting code contributions or pull requests right now.
+Feedback and bug reports are welcome by email at [tyr@boojy.org](mailto:tyr@boojy.org).
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
