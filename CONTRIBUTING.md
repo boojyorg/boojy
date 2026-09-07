@@ -1,14 +1,9 @@
 # Contributing
 
-The Boojy suite is in **Early Access** and isn't accepting code contributions (pull requests)
-yet, so PRs will be closed for now. **Contributions will open as the suite's apps reach their
-v1.0 releases.**
+Boojy is a personal project. It isn't currently accepting external code contributions,
+so pull requests will be closed. This may change in future, but there's no date for it.
 
-Until then, two things are very welcome:
+Feedback and bug reports are very welcome. Email [tyr@boojy.org](mailto:tyr@boojy.org)
+with what happened and, for bugs, how to reproduce it.
 
-- **Bug reports** — [open an issue](https://github.com/boojyorg/boojy-web/issues) with what
-  happened and how to reproduce it.
-- **Feedback & ideas** — email [tyr@boojy.org](mailto:tyr@boojy.org)
-  (also linked from [boojy.org/#feedback](https://boojy.org/#feedback)).
-
-Thanks for your interest in Boojy!
+Thanks for your interest in Boojy.

@@ -6,6 +6,8 @@ convention is in the suite root's `AGENTS.md`.
 ## Unreleased
 
 ### Improvements
+- **Contribution policy simplified** (`CONTRIBUTING.md`, `README.md`): personal project, no
+  external code contributions, feedback and bug reports by email to tyr@boojy.org.
 - **News removed.** The `/news/` archive, its one post (which still described the retired Boojy
   Cloud sync), the content collection, the homepage "Latest" card, and the nav/footer links are
   gone. `/news` and `/news/*` 301 to `/`.
