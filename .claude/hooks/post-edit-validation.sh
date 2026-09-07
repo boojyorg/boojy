@@ -8,7 +8,7 @@ set -euo pipefail
 # under website/, it runs `astro check` as the gate. On failure it prints the
 # (ANSI-stripped) error to stderr and exits non-zero; on success it exits 0.
 #
-# It does NOT write to dreams.md — incident logging was removed when the repo
+# It does NOT write to any doc — incident logging was removed when the repo
 # adopted the auto-memory dev model (git log + auto memory own history now).
 # Biome lint is a separate gate (`pnpm lint`), not run here.
 #

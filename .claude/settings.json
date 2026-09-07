@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "compactPrompt": "When compacting this session, you MUST preserve verbatim: the active target + open milestone checkboxes from dreams.md §1, the load-bearing rules from CLAUDE.md and .claude/rules/ (static-first / no-SSR / never-Vercel, the CF Pages shared-build-settings trap, native view transitions / no ClientRouter, the glow pre-paint root-CSS-var script, the _headers cache-rule combine conflict), the exact file paths modified this session, and any precise error signatures currently under evaluation. Discard greeting filler, historical conversational prose, and superseded styling discussion.",
+  "compactPrompt": "When compacting this session, you MUST preserve verbatim: the current task and any open items headed for docs/BACKLOG.md, the load-bearing rules from CLAUDE.md and .claude/rules/ (static-first / no-SSR / never-Vercel, the CF Pages shared-build-settings trap, native view transitions / no ClientRouter, the glow pre-paint root-CSS-var script, the _headers cache-rule combine conflict), the exact file paths modified this session, and any precise error signatures currently under evaluation. Discard greeting filler, historical conversational prose, and superseded styling discussion.",
   "hooks": {
     "PostToolUse": [
       {

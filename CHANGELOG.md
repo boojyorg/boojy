@@ -6,6 +6,9 @@ convention is in the suite root's `AGENTS.md`.
 ## Unreleased
 
 ### Improvements
+- **Planning files pruned.** `dreams.md` (a June to-do list) and `docs/ROADMAP.md` are gone; their
+  unfinished items and locked decisions live in `docs/BACKLOG.md`, now the one planning file. The
+  stale `session-metrics` skill from the Astro migration is removed.
 - **Contribution policy simplified** (`CONTRIBUTING.md`, `README.md`): personal project, no
   external code contributions, feedback and bug reports by email to tyr@boojy.org.
 - **News removed.** The `/news/` archive, its one post (which still described the retired Boojy
